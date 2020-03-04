@@ -106,6 +106,10 @@ public class Owner extends Person {
 		getPetsInternal().add(pet);
 		pet.setOwner(this);
 	}
+	
+	public void removePet(Pet pet) {
+		getPetsInternal().remove(pet);
+	}
 
 	/**
 	 * Return the Pet with the given name, or null if none found for this Owner.

@@ -55,5 +55,6 @@ public interface PetRepository {
 	 * @see BaseEntity#isNew
 	 */
 	void save(Pet pet) throws DataAccessException;
+	void delete(Pet pet) throws DataAccessException;
 
 }
