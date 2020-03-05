@@ -26,6 +26,7 @@ import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
+import org.springframework.samples.petclinic.repository.PetHotelRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
@@ -48,14 +49,17 @@ public class ClinicService {
 	private OwnerRepository ownerRepository;
 
 	private VisitRepository visitRepository;
+	
+	private PetHotelRepository petHotelRepository;
 
 	@Autowired
 	public ClinicService(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository,
-			VisitRepository visitRepository) {
+			VisitRepository visitRepository, PetHotelRepository petHotelRepository) {
 		this.petRepository = petRepository;
 		this.vetRepository = vetRepository;
 		this.ownerRepository = ownerRepository;
 		this.visitRepository = visitRepository;
+		this.petHotelRepository = petHotelRepository;
 	}
 
 	@Transactional(readOnly = true)
