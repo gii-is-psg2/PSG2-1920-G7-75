@@ -17,6 +17,7 @@ package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -85,7 +86,6 @@ public class ClinicService {
 
 	}
 
-	
 	@Transactional
 	public void saveOwner(Owner owner) throws DataAccessException {
 		ownerRepository.save(owner);
@@ -95,8 +95,9 @@ public class ClinicService {
 	public void saveVisit(Visit visit) throws DataAccessException {
 		visitRepository.save(visit);
 	}
-	
-
+	public Optional<Vet> findOptionalVetById(int vetId){
+		return vetRepository.findVetById(vetId);
+	}
 
 	@Transactional(readOnly = true)
 	public Pet findPetById(int id) throws DataAccessException {
@@ -123,6 +124,7 @@ public class ClinicService {
 	public Collection<Vet> findVets() throws DataAccessException {
 		return vetRepository.findAll();
 	}
+	
 	@Transactional
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);
@@ -132,5 +134,9 @@ public class ClinicService {
 	public void removeVisit(Visit visit) throws DataAccessException {
 		visitRepository.delete(visit);
 	}
-
+	
+	@Transactional
+	public void removeVet(Vet vet) throws DataAccessException {
+		vetRepository.delete(vet);
+	}
 }

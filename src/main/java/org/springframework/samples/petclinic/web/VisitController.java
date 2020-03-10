@@ -101,9 +101,6 @@ public class VisitController {
 		Pet pet = this.clinicService.findPetById(petId);
 		pet.removeVisit(visita);
 		this.clinicService.removeVisit(visita);
-		
-		
-		
 		return "redirect:/owners/{ownerId}";
 		
 	}
