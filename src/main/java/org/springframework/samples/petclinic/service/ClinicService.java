@@ -16,6 +16,8 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -73,6 +75,17 @@ public class ClinicService {
 		return ownerRepository.findByLastName(lastName);
 	}
 
+	@Transactional(readOnly = true)
+	public Visit findVisitById(int id) throws DataAccessException {
+		return visitRepository.findById(id);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Visit> findAll() throws DataAccessException{
+		return visitRepository.findAll();
+
+	}
+
 	@Transactional
 	public void saveOwner(Owner owner) throws DataAccessException {
 		ownerRepository.save(owner);
@@ -81,6 +94,9 @@ public class ClinicService {
 	@Transactional
 	public void saveVisit(Visit visit) throws DataAccessException {
 		visitRepository.save(visit);
+	}
+	public Optional<Vet> findOptionalVetById(int vetId){
+		return vetRepository.findVetById(vetId);
 	}
 
 	@Transactional(readOnly = true)
@@ -97,15 +113,30 @@ public class ClinicService {
 	public void removePet(Pet pet) throws DataAccessException {
 		petRepository.delete(pet);
 	}
+	
+	@Transactional
+	public void removeOwner(Owner owner) throws DataAccessException {
+		ownerRepository.delete(owner);
+	}
 
 	@Transactional(readOnly = true)
 	@Cacheable(value = "vets")
 	public Collection<Vet> findVets() throws DataAccessException {
 		return vetRepository.findAll();
 	}
-
+	
+	@Transactional
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);
+	}	
+	
+	@Transactional
+	public void removeVisit(Visit visit) throws DataAccessException {
+		visitRepository.delete(visit);
 	}
-
+	
+	@Transactional
+	public void removeVet(Vet vet) throws DataAccessException {
+		vetRepository.delete(vet);
+	}
 }
