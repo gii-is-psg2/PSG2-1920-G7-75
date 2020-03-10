@@ -123,10 +123,10 @@ public class ClinicService {
 	public Collection<Vet> findVets() throws DataAccessException {
 		return vetRepository.findAll();
 	}
-
+	@Transactional
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);
-	}
+	}	
 	
 	@Transactional
 	public void removeVisit(Visit visit) throws DataAccessException {

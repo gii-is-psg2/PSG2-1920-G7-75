@@ -45,7 +45,7 @@ public interface VisitRepository {
 
 	List<Visit> findByPetId(Integer petId);
 	
-	Visit findById(Integer visitId);
+	Visit findById(int visitId);
 	
 	List<Visit> findAll();
 

@@ -95,24 +95,17 @@ public class VisitController {
 	}
 	
 	
-	@RequestMapping(value = "/visits/{visitId}/delete")
-	public String deleteVisit(@PathVariable("visitId") int visitId,@PathVariable("petId")int petId, final ModelMap model) {
-		Visit visita = this.clinicService.findVisitsByPetId(petId).stream().filter(v -> v.getId().equals(visitId)).findFirst().orElse(null);
-		Pet pet =this.clinicService.findPetById(petId);
-		//List<Visit> visitas = this.clinicService.findAll();
-		
+	@RequestMapping(value = "/owners/{ownerId}/pets/{petId}/visits/{visitId}/delete")
+	public String deleteVisit(@PathVariable("petId") int petId,@PathVariable("visitId") int visitId, final ModelMap model) {
+		Visit visita = this.clinicService.findVisitById(visitId);
+		Pet pet = this.clinicService.findPetById(petId);
 		pet.removeVisit(visita);
 		this.clinicService.removeVisit(visita);
 		
-//		for(Visit v: visitas) {
-//			if(v.getId()==visitId) {
-//			pet.removeVisit(v);
-//			this.clinicService.removeVisit(v);
-//			
-//			break;
-//			}
-//		}
+		
+		
 		return "redirect:/owners/{ownerId}";
+		
 	}
 
 }
