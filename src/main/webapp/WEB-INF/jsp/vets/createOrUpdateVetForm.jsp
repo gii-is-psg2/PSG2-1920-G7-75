@@ -16,7 +16,6 @@
             <div class="form-group has-feedback">
                 <petclinic:inputField label="FirstName" name="firstName"/>
                 <petclinic:inputField label="LastName" name="lastName"/>
-                <input type="hidden" name="specialties" value=""/>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">

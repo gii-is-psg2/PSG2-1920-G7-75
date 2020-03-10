@@ -3,6 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 
 <petclinic:layout pageName="vets">
     <h2>Veterinarians</h2>
@@ -26,6 +28,12 @@
                     </c:forEach>
                     <c:if test="${vet.nrOfSpecialties == 0}">none</c:if>
                 </td>
+                <td>
+                          <spring:url value="vets/{vetId}/edit" var="vetUrl">
+                          <spring:param name="vetId" value="${vet.id}"/>
+                          </spring:url>
+                          <a href="${fn:escapeXml(vetUrl)}">Edit Vet</a>
+			</td>
             </tr>
         </c:forEach>
         </tbody>
