@@ -21,6 +21,7 @@ import java.util.List;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
+import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.repository.VetRepository;
 
@@ -39,4 +40,9 @@ public interface SpringDataVetRepository extends VetRepository, Repository<Vet, 
 	@Override
 	@Query("SELECT vet FROM Vet vet WHERE vet.id = ?1")
 	Vet findVetById(int id) throws DataAccessException;
+
+	@Override
+	@Query("SELECT specialty FROM Specialty specialty")
+	List<Specialty> findSpecialties() throws DataAccessException;
+
 }
