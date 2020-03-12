@@ -31,29 +31,29 @@ public class PetHotelController {
 		dataBinder.setDisallowedFields("id");
 	}
 
-	@ModelAttribute("hotel")
-	public PetHotel loadPetWithHotel(@PathVariable("petId") int petId) {
-		Pet pet = this.clinicService.findPetById(petId);
-		PetHotel hotel = new PetHotel();
-		pet.addHotel(hotel);
-		return hotel;
-	}
+//	@ModelAttribute("hotel")
+//	public PetHotel loadPetWithHotel(@PathVariable("petId") int petId) {
+//		Pet pet = this.clinicService.findPetById(petId);
+//		PetHotel hotel = new PetHotel();
+//		pet.addHotel(hotel);
+//		return hotel;
+//	}
 
 	@GetMapping(value = "/owners/*/pets/{petId}/hotels/new")
 	public String initNewHotelForm(@PathVariable("petId") int petId, Map<String, Object> model) {
 		return "pets/createOrUpdateVisitForm";
 	}
 
-	@PostMapping(value = "/owners/{ownerId}/pets/{petId}/hotels/new")
-	public String processNewHotelForm(@Valid PetHotel hotel, BindingResult result) {
-		if (result.hasErrors()) {
-			return "pets/createOrUpdateVisitForm";
-		}
-		else {
-			this.clinicService.saveVisit(visit);
-			return "redirect:/owners/{ownerId}";
-		}
-	}
+//	@PostMapping(value = "/owners/{ownerId}/pets/{petId}/hotels/new")
+//	public String processNewHotelForm(@Valid PetHotel hotel, BindingResult result) {
+//		if (result.hasErrors()) {
+//			return "pets/createOrUpdateVisitForm";
+//		}
+//		else {
+//			this.clinicService.save(hotel);
+//			return "redirect:/owners/{ownerId}";
+//		}
+//	}
 
 	@GetMapping(value = "/owners/*/pets/{petId}/visits")
 	public String showVisits(@PathVariable int petId, Map<String, Object> model) {

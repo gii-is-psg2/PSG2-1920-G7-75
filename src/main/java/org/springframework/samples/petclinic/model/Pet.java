@@ -120,11 +120,7 @@ public class Pet extends NamedEntity {
 		getVisitsInternal().add(visit);
 		visit.setPet(this);
 	}
-	
-	public void addHotel(PetHotel hotel) {
-		getHotelsInternal().add(hotel);
-		hotel.setPet(this);
-	}
+
 
 
 }
