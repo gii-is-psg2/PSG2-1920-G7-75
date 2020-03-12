@@ -17,6 +17,7 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -66,7 +67,7 @@ public class ClinicService {
 	}
 
 	@Transactional(readOnly = true)
-	public Collection<Specialty> findSpecialties() throws DataAccessException {
+	public Set<Specialty> findSpecialties() throws DataAccessException {
 		return this.vetRepository.findSpecialties();
 	}
 
