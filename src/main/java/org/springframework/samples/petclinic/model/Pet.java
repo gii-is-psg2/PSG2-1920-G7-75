@@ -110,6 +110,17 @@ public class Pet extends NamedEntity {
 		this.hotels = hotels;
 	}
 
+	public List<PetHotel> getHotels() {
+		List<PetHotel> sortedHotels = new ArrayList<>(getHotelsInternal());
+		PropertyComparator.sort(sortedHotels, new MutableSortDefinition("date", false, false));
+		return Collections.unmodifiableList(sortedHotels);
+	}
+
+	public void addHotel(PetHotel hotel) {
+		getHotelsInternal().add(hotel);
+		hotel.setPet(this);
+	}
+	
 	public List<Visit> getVisits() {
 		List<Visit> sortedVisits = new ArrayList<>(getVisitsInternal());
 		PropertyComparator.sort(sortedVisits, new MutableSortDefinition("date", false, false));

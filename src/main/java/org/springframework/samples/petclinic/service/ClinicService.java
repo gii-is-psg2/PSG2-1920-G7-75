@@ -22,6 +22,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
+import org.springframework.samples.petclinic.model.PetHotel;
 import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
@@ -111,5 +112,20 @@ public class ClinicService {
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);
 	}
-
+	
+	@Transactional()
+	public Collection<PetHotel> findPetHotelsByPetId(int petId) {
+		return petHotelRepository.findByPetId(petId);
+	}
+	
+	@Transactional(readOnly = true)
+	public Collection<PetHotel> findAllPetHotels() {
+		return petHotelRepository.findAll();
+	}
+	
+	@Transactional()
+	public void savePetHotel(PetHotel petHotel) {
+		petHotelRepository.save(petHotel);
+	}
+	
 }
