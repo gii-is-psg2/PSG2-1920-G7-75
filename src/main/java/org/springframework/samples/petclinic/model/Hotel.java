@@ -15,7 +15,7 @@ import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "hotels")
-public class PetHotel extends BaseEntity {
+public class Hotel extends BaseEntity {
 	
 // Attributes --------------------------------------------------------------------------------
 	 

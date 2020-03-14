@@ -22,12 +22,12 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
-import org.springframework.samples.petclinic.model.PetHotel;
+import org.springframework.samples.petclinic.model.Hotel;
 import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
-import org.springframework.samples.petclinic.repository.PetHotelRepository;
+import org.springframework.samples.petclinic.repository.HotelRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
@@ -51,16 +51,16 @@ public class ClinicService {
 
 	private VisitRepository visitRepository;
 	
-	private PetHotelRepository petHotelRepository;
+	private HotelRepository hotelRepository;
 
 	@Autowired
 	public ClinicService(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository,
-			VisitRepository visitRepository, PetHotelRepository petHotelRepository) {
+			VisitRepository visitRepository, HotelRepository hotelRepository) {
 		this.petRepository = petRepository;
 		this.vetRepository = vetRepository;
 		this.ownerRepository = ownerRepository;
 		this.visitRepository = visitRepository;
-		this.petHotelRepository = petHotelRepository;
+		this.hotelRepository = hotelRepository;
 	}
 
 	@Transactional(readOnly = true)
@@ -113,19 +113,18 @@ public class ClinicService {
 		return visitRepository.findByPetId(petId);
 	}
 	
-	@Transactional()
-	public Collection<PetHotel> findPetHotelsByPetId(int petId) {
-		return petHotelRepository.findByPetId(petId);
+	public Collection<Hotel> findHotelsByPetId(int petId) {
+		return hotelRepository.findByPetId(petId);
 	}
 	
-	@Transactional(readOnly = true)
-	public Collection<PetHotel> findAllPetHotels() {
-		return petHotelRepository.findAll();
-	}
+//	@Transactional(readOnly = true)
+//	public Collection<Hotel> findAllHotels() {
+//		return hotelRepository.findAll();
+//	}
 	
-	@Transactional()
-	public void savePetHotel(PetHotel petHotel) {
-		petHotelRepository.save(petHotel);
+	@Transactional
+	public void saveHotel(Hotel hotel) throws DataAccessException {
+		hotelRepository.save(hotel);
 	}
 	
 }

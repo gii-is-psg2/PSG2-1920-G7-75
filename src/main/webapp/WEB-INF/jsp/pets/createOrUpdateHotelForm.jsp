@@ -48,16 +48,13 @@
 
         <form:form modelAttribute="hotel" class="form-horizontal">
             <div class="form-group has-feedback">
-                <petclinic:inputField label="Start Date"
-					name="startDate" />
-                <petclinic:inputField label="End Date"
-					name="endDate" />
+                <petclinic:inputField label="Start Date" name="startDate" />
+                <petclinic:inputField label="End Date" name="endDate" />
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <input type="hidden" name="petId"
-						value="${hotel.pet.id}" />
+                    <input type="hidden" name="petId" value="${hotel.pet.id}" />
                     <button class="btn btn-default" type="submit">Add Hotel</button>
                 </div>
             </div>
