@@ -45,5 +45,5 @@ public interface VetRepository {
 	Set<Specialty> findSpecialties() throws DataAccessException;
 	List<Vet> findAll() throws DataAccessException;
 	void delete(Vet vet) throws DataAccessException;
-	Optional<Vet> findVetById(int vetId) throws DataAccessException;
+	Optional<Vet> findOptVetById(int vetId) throws DataAccessException;
 }

@@ -103,7 +103,7 @@ public class ClinicService {
 		this.visitRepository.save(visit);
 	}
 	public Optional<Vet> findOptionalVetById(int vetId){
-		return vetRepository.findVetById(vetId);
+		return vetRepository.findOptVetById(vetId);
 	}
 
 	@Transactional(readOnly = true)
