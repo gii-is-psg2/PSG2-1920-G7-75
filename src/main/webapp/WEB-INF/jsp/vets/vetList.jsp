@@ -4,10 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-Task-Create-Edit-Vet
-
-
-develop1
 
 <petclinic:layout pageName="vets">
     <h2>Veterinarians</h2>
@@ -31,14 +27,6 @@ develop1
                     </c:forEach>
                     <c:if test="${vet.nrOfSpecialties == 0}">none</c:if>
                 </td>
-Task-Create-Edit-Vet
-                <td>
-                          <spring:url value="vets/{vetId}/edit" var="vetUrl">
-                          <spring:param name="vetId" value="${vet.id}"/>
-                          </spring:url>
-                          <a href="${fn:escapeXml(vetUrl)}">Edit Vet</a>
-			</td>
-
              <td>
                           <spring:url value="vets/{vetId}/edit" var="vetUrl">
                           <spring:param name="vetId" value="${vet.id}"/>
@@ -51,7 +39,6 @@ Task-Create-Edit-Vet
                                 </spring:url>
                                 <a href="${fn:escapeXml(vetUrl)}">Delete Vet</a>
                             </td>
-develop1
             </tr>
         </c:forEach>
         </tbody>
