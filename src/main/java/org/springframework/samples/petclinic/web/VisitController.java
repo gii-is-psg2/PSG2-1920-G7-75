@@ -15,15 +15,20 @@
  */
 package org.springframework.samples.petclinic.web;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -87,6 +92,17 @@ public class VisitController {
 	public String showVisits(@PathVariable int petId, Map<String, Object> model) {
 		model.put("visits", this.clinicService.findPetById(petId).getVisits());
 		return "visitList";
+	}
+	
+	
+	@RequestMapping(value = "/owners/{ownerId}/pets/{petId}/visits/{visitId}/delete")
+	public String deleteVisit(@PathVariable("petId") int petId,@PathVariable("visitId") int visitId, final ModelMap model) {
+		Visit visita = this.clinicService.findVisitById(visitId);
+		Pet pet = this.clinicService.findPetById(petId);
+		pet.removeVisit(visita);
+		this.clinicService.removeVisit(visita);
+		return "redirect:/owners/{ownerId}";
+		
 	}
 
 }
