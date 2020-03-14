@@ -17,7 +17,13 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
+Task-Create-Edit-Vet
 import java.util.Set;
+
+  import java.util.Set;
+import java.util.List;
+import java.util.Optional;
+develop1
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -81,6 +87,17 @@ public class ClinicService {
 		return this.ownerRepository.findByLastName(lastName);
 	}
 
+	@Transactional(readOnly = true)
+	public Visit findVisitById(int id) throws DataAccessException {
+		return visitRepository.findById(id);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Visit> findAll() throws DataAccessException{
+		return visitRepository.findAll();
+
+	}
+
 	@Transactional
 	public void saveOwner(final Owner owner) throws DataAccessException {
 		this.ownerRepository.save(owner);
@@ -89,6 +106,9 @@ public class ClinicService {
 	@Transactional
 	public void saveVisit(final Visit visit) throws DataAccessException {
 		this.visitRepository.save(visit);
+	}
+	public Optional<Vet> findOptionalVetById(int vetId){
+		return vetRepository.findVetById(vetId);
 	}
 
 	@Transactional(readOnly = true)
@@ -104,6 +124,11 @@ public class ClinicService {
 	@Transactional
 	public void removePet(final Pet pet) throws DataAccessException {
 		this.petRepository.delete(pet);
+	}
+	
+	@Transactional
+	public void removeOwner(Owner owner) throws DataAccessException {
+		ownerRepository.delete(owner);
 	}
 
 	@Transactional(readOnly = true)
@@ -121,9 +146,21 @@ public class ClinicService {
 	public void saveVet(final Vet vet) throws DataAccessException {
 		this.vetRepository.save(vet);
 	}
-
-	public Collection<Visit> findVisitsByPetId(final int petId) {
-		return this.visitRepository.findByPetId(petId);
+ Task-Create-Edit-Vet
+	
+	@Transactional
+	public Collection<Visit> findVisitsByPetId(int petId) {
+		return visitRepository.findByPetId(petId);
+	}	
+	
+	@Transactional
+	public void removeVisit(Visit visit) throws DataAccessException {
+		visitRepository.delete(visit);
 	}
-
+	
+	@Transactional
+	public void removeVet(Vet vet) throws DataAccessException {
+		vetRepository.delete(vet);
+ develop1
+	}
 }

@@ -16,8 +16,15 @@
 
 package org.springframework.samples.petclinic.repository;
 
+Task-Create-Edit-Vet
 import java.util.List;
 import java.util.Set;
+
+  import java.util.List;
+import java.util.Set;
+import java.util.Collection;
+import java.util.Optional;
+develop1
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Specialty;
@@ -36,6 +43,7 @@ import org.springframework.samples.petclinic.model.Vet;
  */
 public interface VetRepository {
 
+Task-Create-Edit-Vet
 	List<Vet> findAll() throws DataAccessException;
 
 	Vet findVetById(int id) throws DataAccessException;
@@ -44,4 +52,17 @@ public interface VetRepository {
 
 	Set<Specialty> findSpecialties() throws DataAccessException;
 
+
+	/**
+	 * Retrieve all <code>Vet</code>s from the data store.
+	 * @return a <code>Collection</code> of <code>Vet</code>s
+	 */
+  Vet findVetById(int id) throws DataAccessException;
+
+	void save(Vet vet) throws DataAccessException;
+	Set<Specialty> findSpecialties() throws DataAccessException;
+	List<Vet> findAll() throws DataAccessException;
+	void delete(Vet vet) throws DataAccessException;
+	Optional<Vet> findVetById(int vetId) throws DataAccessException;
+develop1
 }
