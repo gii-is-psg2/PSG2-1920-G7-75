@@ -17,14 +17,9 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
-Task-Create-Edit-Vet
 import java.util.Set;
-
-  import java.util.Set;
 import java.util.List;
 import java.util.Optional;
-develop1
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
@@ -146,7 +141,6 @@ public class ClinicService {
 	public void saveVet(final Vet vet) throws DataAccessException {
 		this.vetRepository.save(vet);
 	}
- Task-Create-Edit-Vet
 	
 	@Transactional
 	public Collection<Visit> findVisitsByPetId(int petId) {
@@ -157,10 +151,9 @@ public class ClinicService {
 	public void removeVisit(Visit visit) throws DataAccessException {
 		visitRepository.delete(visit);
 	}
-	
+    
 	@Transactional
 	public void removeVet(Vet vet) throws DataAccessException {
 		vetRepository.delete(vet);
- develop1
 	}
 }
