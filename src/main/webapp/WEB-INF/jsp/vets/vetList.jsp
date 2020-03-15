@@ -31,13 +31,13 @@
                           <spring:url value="vets/{vetId}/edit" var="vetUrl">
                           <spring:param name="vetId" value="${vet.id}"/>
                           </spring:url>
-                          <a href="${fn:escapeXml(vetUrl)}">Edit Vet</a>
+                          <a href="${fn:escapeXml(vetUrl)}" class="btn btn-default">Edit Vet</a>
 			</td>
                    <td>
                                 <spring:url value="/vet/{vetId}/delete" var="vetUrl">
                                     <spring:param name="vetId" value="${vet.id}"/>
                                 </spring:url>
-                                <a href="${fn:escapeXml(vetUrl)}">Delete Vet</a>
+                                <a href="${fn:escapeXml(vetUrl)}" class="btn btn-default">Delete Vet</a>
                             </td>
             </tr>
         </c:forEach>
