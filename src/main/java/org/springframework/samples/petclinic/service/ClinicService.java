@@ -54,8 +54,6 @@ public class ClinicService {
 	private OwnerRepository	ownerRepository;
 
 	private VisitRepository	visitRepository;
-
-	private VisitRepository visitRepository;
 	
 	private HotelRepository hotelRepository;
 
