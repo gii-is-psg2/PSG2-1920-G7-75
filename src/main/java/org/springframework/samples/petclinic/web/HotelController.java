@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.Hotel;
 import org.springframework.samples.petclinic.service.ClinicService;
@@ -62,14 +63,24 @@ public class HotelController {
 			result.rejectValue("endDate", "dateStartDateAfterDateFinishDate",
 					"The finish date can not be before than start date");
 		}
-
+		
+		
+		
 		if (result.hasErrors()) {
 
 			return VIEWS_HOTEL_CREATE_OR_UPDATE_FORM;
 
 		} else {
-
-			this.clinicService.saveHotel(hotel);
+			
+			try {
+				this.clinicService.saveHotel(hotel);
+			}catch(IncorrectResultSizeDataAccessException oops) {
+				result.rejectValue("endDate", "repeatEndDate","This period is registered for this pet");
+				result.rejectValue("startDate", "repeatStartDate","");
+				
+				return VIEWS_HOTEL_CREATE_OR_UPDATE_FORM;
+			}
+			
 			return "redirect:/owners/{ownerId}";
 
 		}

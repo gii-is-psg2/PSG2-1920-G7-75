@@ -25,6 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Donation;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.samples.petclinic.model.Hotel;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
@@ -199,6 +200,14 @@ public class ClinicService {
 	@Transactional
 	public void saveDonation(final Donation donation) throws DataAccessException {
 		this.donationRepository.save(donation);
+  }
+
+  @Transactional
+	public void saveHotel(Hotel hotel) throws DataAccessException {
+		
+		hotelRepository.CompareBook(hotel.getPet().getId(), hotel.getStartDate(), hotel.getEndDate());
+		hotelRepository.save(hotel);
+			
 	}
 
 }
