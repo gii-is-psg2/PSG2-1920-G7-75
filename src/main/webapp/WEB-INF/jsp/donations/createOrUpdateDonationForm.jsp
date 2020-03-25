@@ -4,11 +4,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="causes">
+<petclinic:layout pageName="donations">
     <jsp:attribute name="customScript">
         <script>
             $(function () {
-                $("#donationDate").datepicker({dateFormat: 'yy/mm/dd'});
+                $("#date").datepicker({dateFormat: 'yyyy/MM/dd'});
             });
         </script>
     </jsp:attribute>
@@ -19,15 +19,11 @@
         <form:form modelAttribute="donation"
                    class="form-horizontal">
             <input type="hidden" name="id" value="${donation.id}"/>
+            <input type="hidden" name="date" value="${date}"/>
             <div class="form-group has-feedback">
-                <petclinic:inputField label="Donation Date" name="donationDate"/>
-                <petclinic:inputField label="Amount" name="amount"/>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Client</label>
-                    <div class="col-sm-10">
-                        <c:out value="${donation.client.firstName} ${donation.client.lastName}"/>
-                    </div>
-                </div>
+                <petclinic:inputField label="Amount" name="quantity"/>
+                <petclinic:inputField label="DonorName" name="donorName"/>
+                <petclinic:inputField label="Cause" name="cause"/>       
             </div>
              <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">

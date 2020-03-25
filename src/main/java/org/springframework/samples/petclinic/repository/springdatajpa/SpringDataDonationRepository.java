@@ -7,10 +7,9 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.samples.petclinic.model.Donation;
-import org.springframework.samples.petclinic.model.Hotel;
 import org.springframework.samples.petclinic.repository.DonationRepository;
 
-public interface SpringDataDonationRepository extends DonationRepository, Repository<Hotel, Integer> {
+public interface SpringDataDonationRepository extends DonationRepository, Repository<Donation, Integer> {
 
 	@Override
 	@Query("SELECT d FROM Donation d where d.id = ?1")
