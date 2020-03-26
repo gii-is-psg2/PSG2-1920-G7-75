@@ -24,9 +24,10 @@
             <input type="hidden" name="date" value="${date}"/>
             <div class="form-group has-feedback">
                 <petclinic:inputField label="Name" name="name"/>
-                <petclinic:inputField label="Description" name="description"/>
-               	<petclinic:inputField label="BudgetTarget" name="target"/>
+                <petclinic:inputField label="Description" name="desc"/>
+               	<petclinic:inputField label="BudgetTarget" name="budgetTarget"/>
                 <petclinic:inputField label="Organization" name="organization"/>
+                 <petclinic:inputField label="Donation" name="donation"/>
            </div>
            
            <div class="form-group">

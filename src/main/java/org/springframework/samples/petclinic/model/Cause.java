@@ -71,6 +71,14 @@ public class Cause extends NamedEntity{
 		this.donation = donation;
 	}
 
+	public void setOrganization(String organization) {
+		this.organization = organization;
+	}
+
+	public String getOrganization() {
+		return organization;
+	}
+
 //	public Donation getDonation() {
 //		return donation;
 //	}

@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CauseController {
-	private static final String VIEWS_CAUSE_CREATE_FORM = "owners/createCauseForm";
+	private static final String VIEWS_CAUSE_CREATE_FORM = "causes/createOrUpdateCauseForm";
 
 	private final ClinicService clinicService;
 	
@@ -45,7 +45,7 @@ public class CauseController {
 		}
 		else {
 			this.clinicService.saveCause(cause);
-			return "redirect:/cause/" + cause.getName();
+			return "redirect:/causes";
 		}
 	}
     

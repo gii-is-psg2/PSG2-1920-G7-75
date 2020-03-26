@@ -33,7 +33,7 @@
                     <span>Veterinarians</span>
                 </petclinic:menuItem>
                 
-                <petclinic:menuItem active="${name eq 'causes'}" url="/causes" title="causes">
+                <petclinic:menuItem active="${name eq 'causes'}" url="/causes/find" title="causes">
                     <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                     <span>Causes</span>
                 </petclinic:menuItem>

@@ -188,7 +188,7 @@ public class ClinicService {
 	
 	@Transactional
 	public void saveCause(Cause cause) throws DataAccessException {
-		causeRepository.save(cause);
+		this.causeRepository.save(cause);
 	}
 	
 }
