@@ -8,25 +8,38 @@
 
 <petclinic:layout pageName="Causes">
     <jsp:attribute name="customScript">
-
+         <script>
+            $(function () {
+                $("#date").datepicker({dateFormat: 'yyyy/MM/dd'});
+            });
+        </script>  
     </jsp:attribute>
     <jsp:body>
-        <h2>Cause </h2>
+        <h2> <c:if test="${cause['new']}">New </c:if>Cause </h2>
         
-        <form:form modelAttribute="cause" class="form-horizontal" action="/causes">
+        <form:form modelAttribute="cause" 
+        			class="form-horizontal" 
+        			action="/causes">
+        	<input type="hidden" name="id" value="${cause.id}"/>
+            <input type="hidden" name="date" value="${date}"/>
             <div class="form-group has-feedback">
                 <petclinic:inputField label="Name" name="name"/>
                 <petclinic:inputField label="Description" name="description"/>
                	<petclinic:inputField label="BudgetTarget" name="target"/>
-                <petclinic:inputField label="Organization" name="Organization"/>
+                <petclinic:inputField label="Organization" name="organization"/>
            </div>
            
            <div class="form-group">
            		<div class="col-sm-offset-2 col-sm-10">
-                	<input type="hidden" name="id" value="${cause.id}">
-                	<button class="btn btn-default" type="submit">Save Cause</button>
+                	 <c:choose>
+                        <c:when test="${cause['new']}">
+                            <button class="btn btn-default" type="submit">Save Cause</button>
+                        </c:when>
+                    </c:choose>
                 </div>
            </div>
         </form:form>
+        <c:if test="${!cause['new']}">
+        </c:if>
     </jsp:body>
 </petclinic:layout>
