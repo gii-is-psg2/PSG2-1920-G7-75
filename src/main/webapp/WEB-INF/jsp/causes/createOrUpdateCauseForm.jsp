@@ -33,7 +33,7 @@
            		<div class="col-sm-offset-2 col-sm-10">
                 	 <c:choose>
                         <c:when test="${cause['new']}">
-                            <button class="btn btn-default" type="submit">Save Cause</button>
+                            <button class="btn btn-default" type="submit" >Save Cause</button>
                         </c:when>
                     </c:choose>
                 </div>

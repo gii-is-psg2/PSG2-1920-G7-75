@@ -17,21 +17,24 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
-import java.util.Set;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
+import org.springframework.samples.petclinic.model.Cause;
+import org.springframework.samples.petclinic.model.Hotel;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
-import org.springframework.samples.petclinic.model.Hotel;
 import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
-import org.springframework.samples.petclinic.repository.OwnerRepository;
+import org.springframework.samples.petclinic.repository.CauseRepository;
 import org.springframework.samples.petclinic.repository.HotelRepository;
+import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
@@ -56,15 +59,18 @@ public class ClinicService {
 	private VisitRepository	visitRepository;
 	
 	private HotelRepository hotelRepository;
+	
+	private CauseRepository causeRepository;
 
 	@Autowired
 	public ClinicService(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository,
-			VisitRepository visitRepository, HotelRepository hotelRepository) {
+			VisitRepository visitRepository, HotelRepository hotelRepository, CauseRepository causeRepository) {
 		this.petRepository = petRepository;
 		this.vetRepository = vetRepository;
 		this.ownerRepository = ownerRepository;
 		this.visitRepository = visitRepository;
 		this.hotelRepository = hotelRepository;
+		this.causeRepository = causeRepository;
 	}
 
 	@Transactional(readOnly = true)
@@ -166,6 +172,10 @@ public class ClinicService {
 		return hotelRepository.findByPetId(petId);
 	}
 	
+	public Collection<Cause> findByName(String name) {
+		return causeRepository.findByName(name);
+	}
+	
 //	@Transactional(readOnly = true)
 //	public Collection<Hotel> findAllHotels() {
 //		return hotelRepository.findAll();
@@ -174,6 +184,11 @@ public class ClinicService {
 	@Transactional
 	public void saveHotel(Hotel hotel) throws DataAccessException {
 		hotelRepository.save(hotel);
+	}
+	
+	@Transactional
+	public void saveCause(Cause cause) throws DataAccessException {
+		causeRepository.save(cause);
 	}
 	
 }
