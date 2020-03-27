@@ -33,9 +33,29 @@
                 <td>
                     <c:out value="${cause.organization}"/>
                 </td>
+		        <td>
+                    <spring:url value="causes/{causeId}/edit" var="causeUrl">
+                    <spring:param name="causeId" value="${cause.id}"/>
+                    </spring:url>
+                    <a href="${fn:escapeXml(causeUrl)}" class="btn btn-default">Edit Cause</a>
+				</td>
+                <td>
+                    <spring:url value="/cause/{causeId}/delete" var="causeUrl">
+                    <spring:param name="causeId" value="${cause.id}"/>
+                   	</spring:url>
+                   	<a href="${fn:escapeXml(causeUrl)}" class="btn btn-default">Delete Cause</a>
+                </td>
                
             </tr>
         </c:forEach>
         </tbody>
     </table>
+    <table class="table-buttons">
+        <tr>
+            <td>
+                <a href="<spring:url value="/causes.xml" htmlEscape="true" />">View as XML</a>
+            </td>            
+        </tr>
+    </table>
+    <a class="btn btn-default" href='<spring:url value="/causes/new"/>'>Add Cause</a>
 </petclinic:layout>

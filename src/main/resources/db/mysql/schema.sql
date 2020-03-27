@@ -62,3 +62,13 @@ CREATE TABLE IF NOT EXISTS hotels (
   end_date DATE,
   FOREIGN KEY (pet_id) REFERENCES pets(id)
 ) engine=InnoDB;
+
+CREATE TABLE IF NOT EXISTS causes (
+  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(30),
+  description VARCHAR(255),
+  budget_target DOUBLE(255),
+  organization VARCHAR(30),
+  FOREIGN KEY (cause_id) REFERENCES causes(id)
+  INDEX(last_name)
+) engine=InnoDB;

@@ -51,3 +51,8 @@ INSERT IGNORE INTO visits VALUES (1, 7, '2010-03-04', 'rabies shot');
 INSERT IGNORE INTO visits VALUES (2, 8, '2011-03-04', 'rabies shot');
 INSERT IGNORE INTO visits VALUES (3, 8, '2009-06-04', 'neutered');
 INSERT IGNORE INTO visits VALUES (4, 7, '2008-09-04', 'spayed');
+
+INSERT IGNORE INTO causes VALUES ("Causa_1", "Recaudación para obra benefica", 123.1, "Fundacion contra el canser", 50.0);
+INSERT IGNORE INTO causes VALUES ("Causa_2", "Recaudacion para aprobar ADDA", 420.0, "Fundacion Ana Vohuele", 5000.0);
+INSERT IGNORE INTO causes VALUES ("Causa_3", "Recaudacion para comprar una matralleta piun piun", 99999.2, "Fundacion Froilan", 50000000.0);
+

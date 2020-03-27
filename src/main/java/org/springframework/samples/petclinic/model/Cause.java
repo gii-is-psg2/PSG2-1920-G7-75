@@ -31,7 +31,7 @@ public class Cause extends NamedEntity{
 	
 	@Column(name = "donation")
 	@NotNull
-	private String donation;
+	private Double donation;
 
 //	@ManyToOne
 //	@JoinColumn(name = "donation")
@@ -63,11 +63,11 @@ public class Cause extends NamedEntity{
 		this.budgetTarget = budgetTarget;
 	}
 	
-	public String getDonation() {
+	public Double getDonation() {
 		return donation;
 	}
 	
-	public void setDonation(String donation) {
+	public void setDonation(Double donation) {
 		this.donation = donation;
 	}
 

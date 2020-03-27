@@ -7,21 +7,15 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="Causes">
-    <jsp:attribute name="customScript">
-         <script>
-            $(function () {
-                $("#date").datepicker({dateFormat: 'yyyy/MM/dd'});
-            });
-        </script>  
-    </jsp:attribute>
+
     <jsp:body>
-        <h2> <c:if test="${cause['new']}">New </c:if>Cause </h2>
+        <h2> 
+        	<c:if test="${cause['new']}">New </c:if>Cause 
+       	</h2>
         
         <form:form modelAttribute="cause" 
-        			class="form-horizontal" 
-        			action="/causes">
+        			class="form-horizontal">
         	<input type="hidden" name="id" value="${cause.id}"/>
-            <input type="hidden" name="date" value="${date}"/>
             <div class="form-group has-feedback">
                 <petclinic:inputField label="Name" name="name"/>
                 <petclinic:inputField label="Description" name="desc"/>
@@ -33,9 +27,12 @@
            <div class="form-group">
            		<div class="col-sm-offset-2 col-sm-10">
                 	 <c:choose>
-                        <c:when test="${cause['new']}">
-                            <button class="btn btn-default" type="submit" >Save Cause</button>
+                       <c:when test="${cause['new']}">
+                            <button class="btn btn-default" type="submit">Add Cause</button>
                         </c:when>
+                        <c:otherwise>
+                            <button class="btn btn-default" type="submit">Update Cause</button>
+                        </c:otherwise>
                     </c:choose>
                 </div>
            </div>

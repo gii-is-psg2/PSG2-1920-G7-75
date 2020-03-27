@@ -31,14 +31,14 @@ public class CauseController {
 		dataBinder.setDisallowedFields("id");
 	}
     
-    @GetMapping(value = "/cause/new")
+    @GetMapping(value = "/causes/new")
 	public String initCreationForm(Map<String, Object> model) {
 		Cause cause = new Cause();
 		model.put("cause", cause);
 		return VIEWS_CAUSE_CREATE_FORM;
 	}
     
-    @PostMapping(value = "/cause/new")
+    @PostMapping(value = "/causes/new")
 	public String processCreationForm(@Valid Cause cause, BindingResult result) {
 		if (result.hasErrors()) {
 			return VIEWS_CAUSE_CREATE_FORM;
@@ -49,7 +49,7 @@ public class CauseController {
 		}
 	}
     
-    @GetMapping("/cause/{name}")
+    @GetMapping("/causes/{name}")
 	public ModelAndView showCause(@PathVariable("name") String name) {
 		ModelAndView mav = new ModelAndView("cause/causeDetails");
 		mav.addObject(this.clinicService.findByName(name));
