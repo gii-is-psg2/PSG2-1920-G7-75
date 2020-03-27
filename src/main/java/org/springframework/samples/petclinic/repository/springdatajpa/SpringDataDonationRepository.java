@@ -18,4 +18,8 @@ public interface SpringDataDonationRepository extends DonationRepository, Reposi
 	@Override
 	@Query("SELECT d FROM Donation d")
 	Collection<Donation> findAll() throws DataAccessException;
+
+	@Override
+	@Query("SELECT d FROM Donation d where d.cause.id = ?1")
+	Collection<Donation> findAllByCauseId(int causeId) throws DataAccessException;
 }

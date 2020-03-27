@@ -17,26 +17,32 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "donations")
 public class Donation extends BaseEntity {
 
+	@ManyToOne
+	@JoinColumn(name = "cause_id")
+	private Cause		cause;
+
 	@Column(name = "donor_name")
 	@NotBlank
-	private String donorName;
+	private String		donorName;
 
 	@Column(name = "donation_date")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
-	private LocalDate date;
+	private LocalDate	date;
 
 	@Column(name = "quantity")
 	@NotNull
-	private Integer quantity;
+	private Integer		quantity;
 
-	@ManyToOne
-	@JoinColumn(name = "cause")
-	private Cause cause;
 
+	public Cause getCause() {
+		return this.cause;
+	}
+	public void setCause(final Cause cause) {
+		this.cause = cause;
+	}
 	public String getDonorName() {
 		return this.donorName;
 	}
-
 	public void setDonorName(final String donorName) {
 		this.donorName = donorName;
 	}
@@ -44,25 +50,15 @@ public class Donation extends BaseEntity {
 	public LocalDate getDate() {
 		return this.date;
 	}
-
 	public void setDate(final LocalDate date) {
 		this.date = date;
 	}
-
 	public Integer getQuantity() {
 		return this.quantity;
 	}
 
 	public void setQuantity(final Integer quantity) {
 		this.quantity = quantity;
-	}
-	
-	public Cause getCause() {
-		return this.cause;
-	}
-
-	public void setCause(Cause cause) {
-		this.cause = cause;
 	}
 
 }

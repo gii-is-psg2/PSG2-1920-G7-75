@@ -63,13 +63,13 @@ public class ClinicService {
 	private HotelRepository		hotelRepository;
 
 	private DonationRepository	donationRepository;
-	
-	private CauseRepository causeRepository;
+
+	private CauseRepository		causeRepository;
 
 
 	@Autowired
-	public ClinicService(final PetRepository petRepository, final VetRepository vetRepository, final OwnerRepository ownerRepository, final VisitRepository visitRepository, final HotelRepository hotelRepository,
-		final DonationRepository donationRepository, final CauseRepository causeRepository) {
+	public ClinicService(final PetRepository petRepository, final VetRepository vetRepository, final OwnerRepository ownerRepository, final VisitRepository visitRepository, final HotelRepository hotelRepository, final DonationRepository donationRepository,
+		final CauseRepository causeRepository) {
 		this.petRepository = petRepository;
 		this.vetRepository = vetRepository;
 		this.ownerRepository = ownerRepository;
@@ -178,6 +178,13 @@ public class ClinicService {
 		return this.hotelRepository.findByPetId(petId);
 	}
 
+	//	@Transactional(readOnly = true)
+	//	public Collection<Hotel> findAllHotels() {
+	//		return hotelRepository.findAll();
+	//	}
+
+	//Donation Service
+
 	@Transactional(readOnly = true)
 	@Cacheable(value = "donations")
 	public Collection<Donation> findAllDonations() throws DataAccessException {
@@ -185,19 +192,32 @@ public class ClinicService {
 	}
 
 	@Transactional(readOnly = true)
+	public Collection<Donation> findAllDonationsByCauseId(final Integer id) throws DataAccessException {
+		return this.donationRepository.findAllByCauseId(id);
+	}
+
+	@Transactional(readOnly = true)
 	public Donation findDonationById(final int id) throws DataAccessException {
 		return this.donationRepository.findDonationById(id);
 	}
 
-	public Collection<Cause> findCauseByName(String name) {
-		return causeRepository.findByName(name);
+	public Collection<Cause> findCauseByName(final String name) {
+		return this.causeRepository.findByName(name);
 	}
-	
-	@Transactional(readOnly = true)
-	public Cause findCauseById(final int id) throws DataAccessException {
-		return this.causeRepository.findCauseById(id);
+
+	public Collection<Cause> findAllCauses() {
+		return this.causeRepository.findByAll();
 	}
-	
+
+	public Cause findCauseById(final Integer id) {
+		return this.causeRepository.findById(id);
+	}
+
+	//	@Transactional(readOnly = true)
+	//	public Collection<Hotel> findAllHotels() {
+	//		return hotelRepository.findAll();
+	//	}
+
 	public void saveDonation(final Donation donation) throws DataAccessException {
 		this.donationRepository.save(donation);
 	}
@@ -209,9 +229,9 @@ public class ClinicService {
 		this.hotelRepository.save(hotel);
 
 	}
-	
+
 	@Transactional
-	public void saveCause(Cause cause) throws DataAccessException {
+	public void saveCause(final Cause cause) throws DataAccessException {
 		this.causeRepository.save(cause);
 	}
 }

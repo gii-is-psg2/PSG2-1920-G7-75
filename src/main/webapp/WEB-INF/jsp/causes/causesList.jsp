@@ -20,12 +20,7 @@
 			<c:forEach items="${selections}" var="cause">
 				<tr>
 					<td><c:out value="${cause.name}" /></td>
-					<td><c:out value="${cause.totalBudget}" /></td>
 					<td><c:out value="${cause.budgetTarget}" /></td>
-					<td><spring:url value="causes/{causeId}/donations/new" var="donationUrl">
-							<spring:param name="causeId" value="${cause.id}" />
-						</spring:url> 
-						<a href="${fn:escapeXml(donationUrl)}" class="btn btn-default">Create Donation</a></td>
 					<td><spring:url value="causes/{causeId}" var="causeUrl">
 							<spring:param name="causeId" value="${cause.id}" />
 						</spring:url> 
@@ -34,4 +29,8 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<br>
+	<br>
+	<br>
+	<a class="btn btn-default" href='<spring:url value="/causes/new" htmlEscape="true"/>'>Add Cause</a>
 </petclinic:layout>

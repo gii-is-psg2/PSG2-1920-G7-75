@@ -36,5 +36,7 @@
                 </div>
            </div>
         </form:form>
+        <c:if test="${!cause['new']}">
+        </c:if>
     </jsp:body>
 </petclinic:layout>

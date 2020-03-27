@@ -12,4 +12,5 @@ public interface DonationRepository {
 	Collection<Donation> findAll() throws DataAccessException;
 
 	void save(Donation donation) throws DataAccessException;
+	Collection<Donation> findAllByCauseId(int causeId) throws DataAccessException;
 }
