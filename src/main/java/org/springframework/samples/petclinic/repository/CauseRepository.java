@@ -10,5 +10,7 @@ public interface CauseRepository {
 	void save(Cause cause) throws DataAccessException;
 	
 	Collection<Cause> findByName(String name) throws DataAccessException;
+
+	Cause findCauseById(int id) throws DataAccessException;
     
 }

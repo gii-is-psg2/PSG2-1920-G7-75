@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Cause;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,34 +60,29 @@ public class CauseController {
 	@GetMapping(value = "/causes")
 	public String processFindForm(Cause cause, BindingResult result, Map<String, Object> model) {
 
-		// allow parameterless GET request for /owners to return all records
 		if (cause.getName() == null) {
-			cause.setname(""); // empty string signifies broadest possible search
+			cause.setname(""); 
 		}
 
-		// find owners by last name
 		Collection<Cause> results = this.clinicService.findCauseByName(cause.getName());
 		if (results.isEmpty()) {
-			// no owners found
 			result.rejectValue("Name", "notFound", "not found");
 			return "causes/findCauses";
 		}
 		else if (results.size() == 1) {
-			// 1 owner found
 			cause = results.iterator().next();
 			return "redirect:/causes/" + cause.getId();
 		}
 		else {
-			// multiple owners found
 			model.put("selections", results);
-			return "causes/listCauses";
+			return "causes/causesList";
 		}
 	}
 	
-    @GetMapping("/causes/{name}")
-	public ModelAndView showCause(@PathVariable("name") String name) {
-		ModelAndView mav = new ModelAndView("causes/listCauses"); //Aquí va el causeDetails pero he puesto el listCauses para comprobar
-		mav.addObject(this.clinicService.findCauseByName(name));
+    @GetMapping("/causes/{causeId}")
+	public ModelAndView showCause(@PathVariable("causeId") int causeId) {
+		ModelAndView mav = new ModelAndView("causes/causeDetails"); 
+		mav.addObject(this.clinicService.findCauseById(causeId));
 		return mav;
 	}
 }

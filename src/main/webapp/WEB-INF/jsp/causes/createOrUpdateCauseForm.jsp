@@ -19,7 +19,6 @@
             <div class="form-group has-feedback">
               	<petclinic:inputField label="BudgetTarget" name="budgetTarget"/>
               	<petclinic:inputField label="Description" name="desc"/>
-              	<petclinic:inputField label="Donation" name="donation"/>
                 <petclinic:inputField label="Name" name="name"/>
                 <petclinic:inputField label="Organization" name="organization"/>
            </div>
@@ -37,7 +36,5 @@
                 </div>
            </div>
         </form:form>
-        <c:if test="${!cause['new']}">
-        </c:if>
     </jsp:body>
 </petclinic:layout>

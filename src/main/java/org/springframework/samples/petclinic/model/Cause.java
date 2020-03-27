@@ -1,8 +1,15 @@
 package org.springframework.samples.petclinic.model;
 
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
@@ -27,15 +34,8 @@ public class Cause extends BaseEntity{
 	@NotBlank
 	private String organization;
 	
-	@Column(name = "donation")
-	@Positive
-	private Double donation;
-
-//	@ManyToOne
-//	@JoinColumn(name = "donation")
-//	private Donation donation;
-
-	
+	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "cause", fetch = FetchType.EAGER)
+	private Set<Donation> donations;
 	
 	public String getName() {
 		return name;
@@ -61,12 +61,15 @@ public class Cause extends BaseEntity{
 		this.budgetTarget = budgetTarget;
 	}
 	
-	public Double getDonation() {
-		return donation;
+	public Set<Donation> getDonations() {
+		if (this.donations == null) {
+			this.donations = new HashSet<>();
+		}
+		return this.donations;
 	}
 	
-	public void setDonation(Double donation) {
-		this.donation = donation;
+	public void setDonations(Set<Donation> donations) {
+		this.donations = donations;
 	}
 
 	public void setOrganization(String organization) {
@@ -77,11 +80,4 @@ public class Cause extends BaseEntity{
 		return organization;
 	}
 
-//	public Donation getDonation() {
-//		return donation;
-//	}
-//
-//	public void setDonation(Donation donation) {
-//		this.donation = donation;
-//	}
 }

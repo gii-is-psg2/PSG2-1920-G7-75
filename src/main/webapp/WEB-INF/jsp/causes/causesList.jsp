@@ -17,7 +17,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${selections}" var="owner">
+			<c:forEach items="${selections}" var="cause">
 				<tr>
 					<td><c:out value="${cause.name}" /></td>
 					<td><c:out value="${cause.totalBudget}" /></td>
