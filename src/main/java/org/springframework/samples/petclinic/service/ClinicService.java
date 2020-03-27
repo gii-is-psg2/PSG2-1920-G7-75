@@ -24,6 +24,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
+import org.springframework.samples.petclinic.model.Cause;
 import org.springframework.samples.petclinic.model.Donation;
 import org.springframework.samples.petclinic.model.Hotel;
 import org.springframework.samples.petclinic.model.Owner;
@@ -32,6 +33,7 @@ import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
+import org.springframework.samples.petclinic.repository.CauseRepository;
 import org.springframework.samples.petclinic.repository.DonationRepository;
 import org.springframework.samples.petclinic.repository.HotelRepository;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
@@ -65,12 +67,13 @@ public class ClinicService {
 
 	@Autowired
 	public ClinicService(final PetRepository petRepository, final VetRepository vetRepository, final OwnerRepository ownerRepository, final VisitRepository visitRepository, final HotelRepository hotelRepository,
-		final DonationRepository donationRepository) {
+		final DonationRepository donationRepository, final CauseRepository causeRepository) {
 		this.petRepository = petRepository;
 		this.vetRepository = vetRepository;
 		this.ownerRepository = ownerRepository;
 		this.visitRepository = visitRepository;
 		this.hotelRepository = hotelRepository;
+		this.causeRepository = causeRepository;
 		this.donationRepository = donationRepository;
 	}
 
@@ -192,6 +195,23 @@ public class ClinicService {
 	}
 
 	@Transactional
+	public void removeVet(Vet vet) throws DataAccessException {
+		vetRepository.delete(vet);
+	}
+	
+	public Collection<Hotel> findHotelsByPetId(int petId) {
+		return hotelRepository.findByPetId(petId);
+	}
+	
+	public Collection<Cause> findCauseByName(String name) {
+		return causeRepository.findByName(name);
+	}
+	
+//	@Transactional(readOnly = true)
+//	public Collection<Hotel> findAllHotels() {
+//		return hotelRepository.findAll();
+//	}
+	
 	public void saveDonation(final Donation donation) throws DataAccessException {
 		this.donationRepository.save(donation);
 	}
@@ -203,5 +223,9 @@ public class ClinicService {
 		this.hotelRepository.save(hotel);
 
 	}
-
+	
+	@Transactional
+	public void saveCause(Cause cause) throws DataAccessException {
+		this.causeRepository.save(cause);
+	}
 }
