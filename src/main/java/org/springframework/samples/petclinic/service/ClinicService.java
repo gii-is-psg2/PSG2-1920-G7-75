@@ -63,6 +63,8 @@ public class ClinicService {
 	private HotelRepository		hotelRepository;
 
 	private DonationRepository	donationRepository;
+	
+	private CauseRepository causeRepository;
 
 
 	@Autowired
@@ -176,13 +178,6 @@ public class ClinicService {
 		return this.hotelRepository.findByPetId(petId);
 	}
 
-	//	@Transactional(readOnly = true)
-	//	public Collection<Hotel> findAllHotels() {
-	//		return hotelRepository.findAll();
-	//	}
-
-	//Donation Service
-
 	@Transactional(readOnly = true)
 	@Cacheable(value = "donations")
 	public Collection<Donation> findAllDonations() throws DataAccessException {
@@ -194,23 +189,14 @@ public class ClinicService {
 		return this.donationRepository.findDonationById(id);
 	}
 
-	@Transactional
-	public void removeVet(Vet vet) throws DataAccessException {
-		vetRepository.delete(vet);
-	}
-	
-	public Collection<Hotel> findHotelsByPetId(int petId) {
-		return hotelRepository.findByPetId(petId);
-	}
-	
 	public Collection<Cause> findCauseByName(String name) {
 		return causeRepository.findByName(name);
 	}
 	
-//	@Transactional(readOnly = true)
-//	public Collection<Hotel> findAllHotels() {
-//		return hotelRepository.findAll();
-//	}
+	@Transactional(readOnly = true)
+	public Cause findCauseById(final int id) throws DataAccessException {
+		return this.causeRepository.findCauseById(id);
+	}
 	
 	public void saveDonation(final Donation donation) throws DataAccessException {
 		this.donationRepository.save(donation);

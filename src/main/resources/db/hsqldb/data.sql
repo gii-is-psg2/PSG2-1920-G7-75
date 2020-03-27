@@ -22,7 +22,7 @@ INSERT INTO types VALUES (4, 'snake');
 INSERT INTO types VALUES (5, 'bird');
 INSERT INTO types VALUES (6, 'hamster');
 
-INSERT INTO donations VALUES (1, 'George', '2010-09-07', '110 W. Liberty St.', 100000);
+-- INSERT INTO donations VALUES (1, 'George', '2010-09-07', '110 W. Liberty St.', 100000);
 
 INSERT INTO owners VALUES (1, 'George', 'Franklin', '110 W. Liberty St.', 'Madison', '6085551023');
 INSERT INTO owners VALUES (2, 'Betty', 'Davis', '638 Cardinal Ave.', 'Sun Prairie', '6085551749');
