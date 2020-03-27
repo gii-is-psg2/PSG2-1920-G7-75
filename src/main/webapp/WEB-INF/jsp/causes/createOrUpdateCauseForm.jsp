@@ -6,7 +6,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="Causes">
+<petclinic:layout pageName="causes">
 
     <jsp:body>
         <h2> 
@@ -17,11 +17,11 @@
         			class="form-horizontal">
         	<input type="hidden" name="id" value="${cause.id}"/>
             <div class="form-group has-feedback">
+              	<petclinic:inputField label="BudgetTarget" name="budgetTarget"/>
+              	<petclinic:inputField label="Description" name="desc"/>
+              	<petclinic:inputField label="Donation" name="donation"/>
                 <petclinic:inputField label="Name" name="name"/>
-                <petclinic:inputField label="Description" name="desc"/>
-               	<petclinic:inputField label="BudgetTarget" name="budgetTarget"/>
                 <petclinic:inputField label="Organization" name="organization"/>
-                 <petclinic:inputField label="Donation" name="donation"/>
            </div>
            
            <div class="form-group">

@@ -33,19 +33,6 @@
                 <td>
                     <c:out value="${cause.organization}"/>
                 </td>
-		        <td>
-                    <spring:url value="causes/{causeId}/edit" var="causeUrl">
-                    <spring:param name="causeId" value="${cause.id}"/>
-                    </spring:url>
-                    <a href="${fn:escapeXml(causeUrl)}" class="btn btn-default">Edit Cause</a>
-				</td>
-                <td>
-                    <spring:url value="/cause/{causeId}/delete" var="causeUrl">
-                    <spring:param name="causeId" value="${cause.id}"/>
-                   	</spring:url>
-                   	<a href="${fn:escapeXml(causeUrl)}" class="btn btn-default">Delete Cause</a>
-                </td>
-               
             </tr>
         </c:forEach>
         </tbody>

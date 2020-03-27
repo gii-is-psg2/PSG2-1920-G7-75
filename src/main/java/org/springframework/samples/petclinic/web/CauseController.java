@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.web;
 
+import java.util.Collection;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -45,14 +46,47 @@ public class CauseController {
 		}
 		else {
 			this.clinicService.saveCause(cause);
-			return "redirect:/causes";
+			return "redirect:/causes/"+cause.getId();
 		}
 	}
     
+	@GetMapping(value = "/causes/find")
+	public String initFindForm(Map<String, Object> model) {
+		model.put("cause", new Cause());
+		return "causes/findCauses";
+	}
+
+	@GetMapping(value = "/causes")
+	public String processFindForm(Cause cause, BindingResult result, Map<String, Object> model) {
+
+		// allow parameterless GET request for /owners to return all records
+		if (cause.getName() == null) {
+			cause.setname(""); // empty string signifies broadest possible search
+		}
+
+		// find owners by last name
+		Collection<Cause> results = this.clinicService.findCauseByName(cause.getName());
+		if (results.isEmpty()) {
+			// no owners found
+			result.rejectValue("Name", "notFound", "not found");
+			return "causes/findCauses";
+		}
+		else if (results.size() == 1) {
+			// 1 owner found
+			cause = results.iterator().next();
+			return "redirect:/causes/" + cause.getId();
+		}
+		else {
+			// multiple owners found
+			model.put("selections", results);
+			return "causes/listCauses";
+		}
+	}
+	
     @GetMapping("/causes/{name}")
 	public ModelAndView showCause(@PathVariable("name") String name) {
-		ModelAndView mav = new ModelAndView("cause/causeDetails");
-		mav.addObject(this.clinicService.findByName(name));
+		ModelAndView mav = new ModelAndView("causes/listCauses"); //Aquí va el causeDetails pero he puesto el listCauses para comprobar
+		mav.addObject(this.clinicService.findCauseByName(name));
 		return mav;
 	}
 }

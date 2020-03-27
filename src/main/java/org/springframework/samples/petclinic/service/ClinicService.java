@@ -172,7 +172,7 @@ public class ClinicService {
 		return hotelRepository.findByPetId(petId);
 	}
 	
-	public Collection<Cause> findByName(String name) {
+	public Collection<Cause> findCauseByName(String name) {
 		return causeRepository.findByName(name);
 	}
 	

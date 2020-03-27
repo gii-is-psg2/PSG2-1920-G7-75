@@ -4,21 +4,19 @@ package org.springframework.samples.petclinic.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
-
-
-import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "causes")
-public class Cause extends NamedEntity{
+public class Cause extends BaseEntity{
 
 	@Column(name = "name")
-	@NotNull
+	@NotBlank
 	private String name;
 	
 	@Column(name = "description")
-	@NotNull
+	@NotBlank
 	private String desc;
 	
 	@Column(name = "budget_target")
@@ -26,11 +24,11 @@ public class Cause extends NamedEntity{
 	private Double budgetTarget;
 	
 	@Column(name = "organization")
-	@NotNull
+	@NotBlank
 	private String organization;
 	
 	@Column(name = "donation")
-	@NotNull
+	@Positive
 	private Double donation;
 
 //	@ManyToOne
