@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.repository;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -21,5 +22,10 @@ public interface HotelRepository {
     
     @Query("SELECT p.hotels FROM Pet p where p.id=:petId")
 	Collection<Hotel> findHotelsByPetId(@Param(value = "petId") int petId);
+    
+    @Query("SELECT h FROM Hotel h WHERE h.pet.id=:petId AND ((h.startDate >=:start AND h.startDate <=:end) "
+    		+ "OR (h.startDate <=:start AND h.endDate >=:start)"
+    		+ "OR (h.startDate <=:end AND h.endDate >=:end))")
+    Hotel CompareBook(@Param(value = "petId") int petId,@Param(value = "start") LocalDate start, @Param(value = "end") LocalDate end);
 	
 }
