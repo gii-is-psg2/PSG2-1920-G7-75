@@ -28,10 +28,11 @@
         </tr>
     </table>
     
+	<c:if test = "${cause.totalBudget < cause.budgetTarget}">
     <spring:url value="{causeId}/newDonation" var="donationUrl">
 		<spring:param name="causeId" value="${cause.id}" />
 		</spring:url> 
-		<a href="${fn:escapeXml(donationUrl)}" class="btn btn-default">Create Donation</a>
+		<a href="${fn:escapeXml(donationUrl)}" class="btn btn-default">Create Donation</a></c:if>
 				
 
     <br/>
