@@ -14,7 +14,11 @@
             <form:input type="hidden" path="id" value="${donation.id}"/>
             <div class="form-group has-feedback">
                 <petclinic:inputField label="quantity" name="quantity"/>
-                <petclinic:inputField label="donorName" name="donorName"/>      
+                <select required="required" name="ownerName">
+					<c:forEach items="${listOwners}" var="item">
+							<option value="${item.firstName}">${item.firstName}</option>
+					</c:forEach>
+				</select>    
             </div>
              <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
