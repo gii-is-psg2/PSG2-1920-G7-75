@@ -53,7 +53,7 @@ public class Donation extends BaseEntity {
 		this.cause = cause;
 	}
 	
-	public Owner getDonor(){ 
+	public Owner getOwner(){ 
 		return this.owner;
 	}
 	
@@ -61,7 +61,7 @@ public class Donation extends BaseEntity {
 		return owner.getFirstName();
 	}
 	
-	public void setDonor(final Owner owner) {
+	public void setOwner(final Owner owner) {
 		this.owner=owner;
 	}
 
