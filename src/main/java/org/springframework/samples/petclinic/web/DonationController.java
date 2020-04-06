@@ -47,14 +47,14 @@ public class DonationController {
 	}
 
 	@PostMapping(value = "/causes/{causeId}/newDonation")
-	public String processCreationForm(@Valid final Donation donation, @PathVariable("causeId") final int causeId, @RequestParam(name = "ownerName", required = true) final String name, final BindingResult result, final Map<String, Object> model) {
+	public String processCreationForm(@Valid final Donation donation, @PathVariable("causeId") final int causeId, @RequestParam(name = "owner_id", required = true) final Integer ownerId, final BindingResult result, final Map<String, Object> model) {
 		if (result.hasErrors()) {
 			model.put("donation", donation);
 			return DonationController.VIEWS_DONATIONS_CREATE_OR_UPDATE_FORM;
 		} else {
-			if (name != null) {
-				String selected = (String) this.populateOwners().stream().filter(x->x.getFirstName().equals(name)).toArray()[0];
-				donation.setDonorName(selected);
+			if (ownerId != null) {
+				Owner selected = this.clinicService.findOwnerById(ownerId);
+				donation.setDonor(selected);
 			}
 			Cause causa = this.clinicService.findCauseById(causeId);
 			donation.setDate(LocalDate.now());

@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -30,10 +32,9 @@ public class Donation extends BaseEntity {
 //	@Column(name = "donor_name")
 //	@NotBlank
 //	private String		donorName;
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "donation_owners", joinColumns = @JoinColumn(name = "donation_id"),
-			inverseJoinColumns = @JoinColumn(name = "owner_id"))
-	private Set<Owner> owners;
+	@ManyToOne
+	@JoinColumn(name = "owner_id")
+	private Owner owner;
 
 	@Column(name = "donation_date")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
@@ -51,20 +52,17 @@ public class Donation extends BaseEntity {
 	public void setCause(final Cause cause) {
 		this.cause = cause;
 	}
-	public Set<String> getDonorNames(final Set<Owner> owners) {
-		Set<String> nombres = new HashSet<String>();
-		for(Owner o:this.owners) {
-			nombres.add(o.getFirstName());
-		}
-		return nombres;
+	
+	public Owner getDonor(){ 
+		return this.owner;
 	}
 	
-	public void setDonorName(final String name, Integer ownerId) {
-		for(Owner o:this.owners) {
-			if(o.getId().equals(ownerId)) {
-				o.setFirstName(name);
-			}
-		}
+	public String getDonorName(final Owner owner) {
+		return owner.getFirstName();
+	}
+	
+	public void setDonor(final Owner owner) {
+		this.owner=owner;
 	}
 
 	public LocalDate getDate() {
