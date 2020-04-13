@@ -24,7 +24,9 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
@@ -60,7 +62,14 @@ public class Owner extends Person {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
 	private Set<Pet> pets;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="owner")
+	private Set<Donation> donations;
 
+	public Set<Donation> getDonations(){
+		return this.donations;
+	}
+	
 	public String getAddress() {
 		return this.address;
 	}

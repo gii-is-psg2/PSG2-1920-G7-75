@@ -6,16 +6,26 @@
 
 <petclinic:layout pageName="donations">
     <jsp:body>
+    
         <h2>
             <c:if test="${donation['new']}">New </c:if> Donation
         </h2>
-        <form:form method="POST" modelAttribute="donation"
-                   class="form-horizontal">
+        
+        <form:form method="POST" modelAttribute="donation" class="form-horizontal">
             <form:input type="hidden" path="id" value="${donation.id}"/>
+            
             <div class="form-group has-feedback">
+            
                 <petclinic:inputField label="quantity" name="quantity"/>
-                <petclinic:inputField label="donorName" name="donorName"/>      
+                
+                <select name="ownerId">
+					<c:forEach items="${listOwners}" var="item">
+							<option value="${item.id}" label="${item.lastName}, ${item.firstName}"></option>
+					</c:forEach>
+				</select> 
+				   
             </div>
+            
              <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <c:choose>

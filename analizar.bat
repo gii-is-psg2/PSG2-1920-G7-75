@@ -1,0 +1,1 @@
+mvn sonar:sonar -Dsonar.projectKey=org.springframework.samples.spring-petclinic -Dsonar.host.url=http://oitilo.us.es:9000 -Dsonar.login=e0f258e60c4d19d9b61b6c0b1c463cb5a80a4dcb
