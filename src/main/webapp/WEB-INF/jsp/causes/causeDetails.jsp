@@ -51,7 +51,7 @@
                         <dt>Amount</dt>
                         <dd><c:out value="${donation.quantity}"/></dd>
                         <dt>Client</dt>
-                        <dd><c:out value="${donation.donorName}"/></dd>
+                        <dd><c:out value="${donation.owner.firstName}"/></dd>
                     </dl>
                 </td>
             </tr>

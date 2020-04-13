@@ -16,6 +16,7 @@
 package org.springframework.samples.petclinic.repository;
 
 import java.util.Collection;
+import java.util.Set;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.BaseEntity;
@@ -50,6 +51,8 @@ public interface OwnerRepository {
 	 * @throws org.springframework.dao.DataRetrievalFailureException if not found
 	 */
 	Owner findById(int id) throws DataAccessException;
+	
+	Set<Owner> findOwners() throws DataAccessException;
 
 	/**
 	 * Save an <code>Owner</code> to the data store, either inserting or updating it.

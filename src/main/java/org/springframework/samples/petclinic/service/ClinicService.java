@@ -88,6 +88,11 @@ public class ClinicService {
 	public Set<Specialty> findSpecialties() throws DataAccessException {
 		return this.vetRepository.findSpecialties();
 	}
+	
+	@Transactional(readOnly = true)
+	public Set<Owner> findOwners() throws DataAccessException {
+		return this.ownerRepository.findOwners();
+	}
 
 	@Transactional(readOnly = true)
 	public Owner findOwnerById(final int id) throws DataAccessException {
