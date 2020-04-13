@@ -18,7 +18,7 @@
             
                 <petclinic:inputField label="quantity" name="quantity"/>
                 
-                <select name="ownerId">
+                <select name="owner_id">
 					<c:forEach items="${listOwners}" var="item">
 							<option value="${item.id}" label="${item.lastName}, ${item.firstName}"></option>
 					</c:forEach>
