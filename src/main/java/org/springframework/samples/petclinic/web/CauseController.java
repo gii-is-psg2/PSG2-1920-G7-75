@@ -23,7 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class CauseController {
 
 	private static final String	VIEWS_CAUSE_CREATE_FORM	= "causes/createOrUpdateCauseForm";
-
+	private static final String CAUSE = "cause";
+	
 	private final ClinicService	clinicService;
 
 
@@ -39,7 +40,7 @@ public class CauseController {
 	@GetMapping(value = "/causes/new")
 	public String initCreationForm(final Map<String, Object> model) {
 		Cause cause = new Cause();
-		model.put("cause", cause);
+		model.put(CAUSE, cause);
 		return CauseController.VIEWS_CAUSE_CREATE_FORM;
 	}
 
@@ -55,7 +56,7 @@ public class CauseController {
 
 	@GetMapping(value = "/causes/find")
 	public String initFindForm(final Map<String, Object> model) {
-		model.put("cause", new Cause());
+		model.put(CAUSE, new Cause());
 		return "causes/findCauses";
 	}
 
@@ -93,7 +94,7 @@ public class CauseController {
 	@GetMapping("/causes/{causeId}")
 	public ModelAndView showCause(@PathVariable("causeId") final int causeId) {
 		ModelAndView mav = new ModelAndView("causes/causeDetails"); //Aquí va el causeDetails pero he puesto el listCauses para comprobar
-		mav.addObject("cause", this.clinicService.findCauseById(causeId));
+		mav.addObject(CAUSE, this.clinicService.findCauseById(causeId));
 		Collection<Donation> donaciones = this.clinicService.findAllDonationsByCauseId(causeId);
 		mav.addObject("donations", donaciones);
 		return mav;
