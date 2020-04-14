@@ -22,6 +22,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class HotelController {
 
     private static final String VIEWS_HOTEL_CREATE_OR_UPDATE_FORM = "pets/createOrUpdateHotelForm";
+    private static final String START_DATE = "startDate";
+    private static final String END_DATE = "endDate";
+    
     private final ClinicService clinicService;
     
     @Autowired
@@ -52,15 +55,15 @@ public class HotelController {
 
 		if ((hotel.getStartDate() == null || hotel.getEndDate() == null)) {
 			if ((hotel.getStartDate() == null && hotel.getEndDate() == null)) {
-				result.rejectValue("startDate", "wrongStartDate", "The start date can not be empty");
-				result.rejectValue("endDate", "wrongEndDate", "The finish date can not be empty");
+				result.rejectValue(START_DATE, "wrongStartDate", "The start date can not be empty");
+				result.rejectValue(END_DATE, "wrongEndDate", "The finish date can not be empty");
 			} else if ((hotel.getStartDate() == null)) {
-				result.rejectValue("startDate", "wrongStartDate", "The start date can not be empty");
+				result.rejectValue(START_DATE, "wrongStartDate", "The start date can not be empty");
 			} else {
-				result.rejectValue("endDate", "wrongEndDate", "The finish date can not be empty");
+				result.rejectValue(END_DATE, "wrongEndDate", "The finish date can not be empty");
 			}
 		} else if (hotel.getEndDate().isBefore(hotel.getStartDate())) {
-			result.rejectValue("endDate", "dateStartDateAfterDateFinishDate",
+			result.rejectValue(END_DATE, "dateStartDateAfterDateFinishDate",
 					"The finish date can not be before than start date");
 		}
 		
@@ -75,8 +78,8 @@ public class HotelController {
 			try {
 				this.clinicService.saveHotel(hotel);
 			}catch(IncorrectResultSizeDataAccessException oops) {
-				result.rejectValue("endDate", "repeatEndDate","This period is registered for this pet");
-				result.rejectValue("startDate", "repeatStartDate","");
+				result.rejectValue(END_DATE, "repeatEndDate","This period is registered for this pet");
+				result.rejectValue(START_DATE, "repeatStartDate","");
 				
 				return VIEWS_HOTEL_CREATE_OR_UPDATE_FORM;
 			}

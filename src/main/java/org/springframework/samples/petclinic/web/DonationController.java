@@ -72,23 +72,4 @@ public class DonationController {
 		}
 	}
 
-	/*
-	 * @PostMapping(value = "/causes/{causeId}/newDonation")
-	 * public String processCreationForm(@Valid final Donation donation, @PathVariable("causeId") final int causeId, @RequestParam(name = "owner_id", required = true) final Integer ownerId, final BindingResult result, final Map<String, Object> model) {
-	 * if (result.hasErrors()) {
-	 * model.put("donation", donation);
-	 * return DonationController.VIEWS_DONATIONS_CREATE_OR_UPDATE_FORM;
-	 * } else {
-	 * if (ownerId != null) {
-	 * Owner selected = this.clinicService.findOwnerById(ownerId);
-	 * donation.setDonor(selected);
-	 * }
-	 * Cause causa = this.clinicService.findCauseById(causeId);
-	 * donation.setDate(LocalDate.now());
-	 * donation.setCause(causa);
-	 * this.clinicService.saveDonation(donation);
-	 * return "redirect:/causes/" + donation.getCause().getId();
-	 * }
-	 * }
-	 */
 }
