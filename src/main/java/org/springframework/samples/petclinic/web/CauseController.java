@@ -23,8 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class CauseController {
 
 	private static final String	VIEWS_CAUSE_CREATE_FORM	= "causes/createOrUpdateCauseForm";
-	private static final String CAUSE = "cause";
-	
+	private static final String	CAUSE					= "cause";
+
 	private final ClinicService	clinicService;
 
 
@@ -40,7 +40,7 @@ public class CauseController {
 	@GetMapping(value = "/causes/new")
 	public String initCreationForm(final Map<String, Object> model) {
 		Cause cause = new Cause();
-		model.put(CAUSE, cause);
+		model.put(CauseController.CAUSE, cause);
 		return CauseController.VIEWS_CAUSE_CREATE_FORM;
 	}
 
@@ -56,7 +56,7 @@ public class CauseController {
 
 	@GetMapping(value = "/causes/find")
 	public String initFindForm(final Map<String, Object> model) {
-		model.put(CAUSE, new Cause());
+		model.put(CauseController.CAUSE, new Cause());
 		return "causes/findCauses";
 	}
 
@@ -68,7 +68,7 @@ public class CauseController {
 			cause.setname(""); // empty string signifies broadest possible search
 		}
 
-		if (cause.getName() == "") {
+		if (cause.getName().equals("")) {
 			Collection<Cause> allresults = this.clinicService.findAllCauses();
 			model.put("selections", allresults);
 			return "causes/causesList";
@@ -94,7 +94,7 @@ public class CauseController {
 	@GetMapping("/causes/{causeId}")
 	public ModelAndView showCause(@PathVariable("causeId") final int causeId) {
 		ModelAndView mav = new ModelAndView("causes/causeDetails"); //Aquí va el causeDetails pero he puesto el listCauses para comprobar
-		mav.addObject(CAUSE, this.clinicService.findCauseById(causeId));
+		mav.addObject(CauseController.CAUSE, this.clinicService.findCauseById(causeId));
 		Collection<Donation> donaciones = this.clinicService.findAllDonationsByCauseId(causeId);
 		mav.addObject("donations", donaciones);
 		return mav;
