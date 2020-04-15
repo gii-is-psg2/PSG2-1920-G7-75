@@ -52,7 +52,8 @@ public class VetController {
 	private final ClinicService	clinicService;
 
 	private static final String	VIEWS_VETS_CREATE_OR_UPDATE_FORM	= "vets/createOrUpdateVetForm";
-	private static final String REDIRECT_VETS = "redirect:/vets";
+	private static final String	REDIRECT_VETS						= "redirect:/vets";
+
 
 	@Autowired
 	public VetController(final ClinicService clinicService) {
@@ -88,7 +89,7 @@ public class VetController {
 		vets.getVetList().addAll(this.clinicService.findVets());
 		return vets;
 	}
-    
+
 	@GetMapping(value = "/vets/new")
 	public String initCreationForm(final ModelMap model) {
 		Vet vet = new Vet();
@@ -114,7 +115,7 @@ public class VetController {
 				}
 			}
 			this.clinicService.saveVet(vet);
-			return REDIRECT_VETS;
+			return VetController.REDIRECT_VETS;
 		}
 	}
 
@@ -142,14 +143,16 @@ public class VetController {
 				}
 			}
 			this.clinicService.saveVet(vet);
-			return REDIRECT_VETS;
+			return VetController.REDIRECT_VETS;
 		}
 	}
 
 	@RequestMapping(value = "/vet/{vetId}/delete")
 	public String deleteVet(@PathVariable("vetId") final int vetId, final ModelMap model) {
-		Optional<Vet> vet= this.clinicService.findOptionalVetById(vetId);
-		this.clinicService.removeVet(vet.get());
-		return REDIRECT_VETS;
+		Optional<Vet> vet = this.clinicService.findOptionalVetById(vetId);
+		if (vet.isPresent()) {
+			this.clinicService.removeVet(vet.get());
+		}
+		return VetController.REDIRECT_VETS;
 	}
 }
