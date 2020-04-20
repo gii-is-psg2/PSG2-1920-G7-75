@@ -19,21 +19,22 @@ package org.springframework.samples.petclinic.web;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import java.util.Optional;
+import java.util.Set;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Vets;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
-import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,6 +52,7 @@ public class VetController {
 	private final ClinicService	clinicService;
 
 	private static final String	VIEWS_VETS_CREATE_OR_UPDATE_FORM	= "vets/createOrUpdateVetForm";
+	private static final String	REDIRECT_VETS						= "redirect:/vets";
 
 
 	@Autowired
@@ -87,7 +89,7 @@ public class VetController {
 		vets.getVetList().addAll(this.clinicService.findVets());
 		return vets;
 	}
-    
+
 	@GetMapping(value = "/vets/new")
 	public String initCreationForm(final ModelMap model) {
 		Vet vet = new Vet();
@@ -113,7 +115,7 @@ public class VetController {
 				}
 			}
 			this.clinicService.saveVet(vet);
-			return "redirect:/vets";
+			return VetController.REDIRECT_VETS;
 		}
 	}
 
@@ -141,14 +143,16 @@ public class VetController {
 				}
 			}
 			this.clinicService.saveVet(vet);
-			return "redirect:/vets";
+			return VetController.REDIRECT_VETS;
 		}
 	}
 
 	@RequestMapping(value = "/vet/{vetId}/delete")
 	public String deleteVet(@PathVariable("vetId") final int vetId, final ModelMap model) {
-		Optional<Vet> vet= this.clinicService.findOptionalVetById(vetId);
-		this.clinicService.removeVet(vet.get());
-		return "redirect:/vets";
+		Optional<Vet> vet = this.clinicService.findOptionalVetById(vetId);
+		if (vet.isPresent()) {
+			this.clinicService.removeVet(vet.get());
+		}
+		return VetController.REDIRECT_VETS;
 	}
 }

@@ -17,7 +17,6 @@ package org.springframework.samples.petclinic.repository.springdatajpa;
 
 import java.util.List;
 
-import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.samples.petclinic.model.Visit;
@@ -33,6 +32,6 @@ public interface SpringDataVisitRepository extends VisitRepository, Repository<V
 	
 	@Override
 	@Query("SELECT visit from Visit visit") 
-	List<Visit> findAll() throws DataAccessException;
+	List<Visit> findAll();
 
 }

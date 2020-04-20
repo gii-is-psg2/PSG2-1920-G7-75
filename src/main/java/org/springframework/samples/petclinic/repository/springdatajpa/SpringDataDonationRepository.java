@@ -3,7 +3,6 @@ package org.springframework.samples.petclinic.repository.springdatajpa;
 
 import java.util.Collection;
 
-import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.samples.petclinic.model.Donation;
@@ -13,13 +12,13 @@ public interface SpringDataDonationRepository extends DonationRepository, Reposi
 
 	@Override
 	@Query("SELECT d FROM Donation d where d.id = ?1")
-	Donation findDonationById(int id) throws DataAccessException;
+	Donation findDonationById(int id);
 
 	@Override
 	@Query("SELECT d FROM Donation d")
-	Collection<Donation> findAll() throws DataAccessException;
+	Collection<Donation> findAll();
 
 	@Override
 	@Query("SELECT d FROM Donation d where d.cause.id = ?1")
-	Collection<Donation> findAllByCauseId(int causeId) throws DataAccessException;
+	Collection<Donation> findAllByCauseId(int causeId);
 }

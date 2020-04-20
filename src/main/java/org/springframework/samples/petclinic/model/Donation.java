@@ -2,19 +2,11 @@
 package org.springframework.samples.petclinic.model;
 
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -29,9 +21,6 @@ public class Donation extends BaseEntity {
 	@JoinColumn(name = "cause_id")
 	private Cause		cause;
 
-//	@Column(name = "donor_name")
-//	@NotBlank
-//	private String		donorName;
 	@ManyToOne
 	@JoinColumn(name = "owner_id")
 	private Owner owner;
