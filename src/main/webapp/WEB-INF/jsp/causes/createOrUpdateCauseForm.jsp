@@ -17,9 +17,9 @@
         			class="form-horizontal">
         	<input type="hidden" name="id" value="${cause.id}"/>
             <div class="form-group has-feedback">
+            	<petclinic:inputField label="Name" name="name"/>
+            	<petclinic:inputField label="Description" name="desc"/>
               	<petclinic:inputField label="BudgetTarget" name="budgetTarget"/>
-              	<petclinic:inputField label="Description" name="desc"/>
-                <petclinic:inputField label="Name" name="name"/>
                 <petclinic:inputField label="Organization" name="organization"/>
            </div>
            
