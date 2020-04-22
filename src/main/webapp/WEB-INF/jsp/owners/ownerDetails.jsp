@@ -120,7 +120,7 @@
 
         </c:forEach>
     </table>
-    <h2>Pets and Hotels</h2>
+    <h2>Pets and Bookings</h2>
 
 	<table class="table table-striped">
 		<c:forEach var="pet" items="${owner.pets}">
@@ -163,7 +163,7 @@
 									value="/owners/{ownerId}/pets/{petId}/hotels/new" var="hotelUrl">
 									<spring:param name="ownerId" value="${owner.id}" />
 									<spring:param name="petId" value="${pet.id}" />
-								</spring:url> <a href="${fn:escapeXml(hotelUrl)}" class="btn btn-default">Add Hotel</a></td>
+								</spring:url> <a href="${fn:escapeXml(hotelUrl)}" class="btn btn-default">Add Booking</a></td>
 						</tr>
 					</table>
 				</td>
