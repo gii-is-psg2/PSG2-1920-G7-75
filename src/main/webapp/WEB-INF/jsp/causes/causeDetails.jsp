@@ -32,8 +32,12 @@
     <spring:url value="{causeId}/newDonation" var="donationUrl">
 		<spring:param name="causeId" value="${cause.id}" />
 		</spring:url> 
-		<a href="${fn:escapeXml(donationUrl)}" class="btn btn-default">Create Donation</a></c:if>
-				
+		<a href="${fn:escapeXml(donationUrl)}" class="btn btn-default">Create Donation</a>
+	</c:if>
+	
+	<c:if test = "${cause.totalBudget == cause.budgetTarget}">
+    	<c:out value="This cause is closed"/>
+	</c:if>
 
     <br/>
     <br/>
