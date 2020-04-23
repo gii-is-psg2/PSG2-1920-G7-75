@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Cause;
 import org.springframework.samples.petclinic.model.Donation;
 import org.springframework.samples.petclinic.model.Owner;
+import org.springframework.samples.petclinic.model.Pet;
+import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -36,7 +38,7 @@ public class DonationController {
 	public DonationController(final ClinicService clinicService) {
 		this.clinicService = clinicService;
 	}
-
+	
 	@ModelAttribute("listOwners")
 	public Set<Owner> populateOwners() {
 		return this.clinicService.findOwners();
@@ -47,23 +49,25 @@ public class DonationController {
 		Cause causa = this.clinicService.findCauseById(causeId);
 		dataBinder.setValidator(new DonationValidator(causa));
 	}
-
+	
 	@GetMapping(value = "/newDonation")
-	public String initCreationForm(final ModelMap model) {
+	public String initCreationForm(@PathVariable("causeId") final int causeId, final ModelMap model) {
 		Donation donation = new Donation();
+		Cause cause = clinicService.findCauseById(causeId);
 		model.put("donation", donation);
+		model.put("cause", cause);
 		return DonationController.VIEWS_DONATIONS_CREATE_OR_UPDATE_FORM;
 	}
 
 	@PostMapping(value = "/newDonation")
 	public String processCreationForm(@Valid final Donation donation, final BindingResult result, final ModelMap model, @PathVariable("causeId") final int causeId, @RequestParam(name = "owner_id", required = true) final Integer ownerId) {
-
+		Cause causa = this.clinicService.findCauseById(causeId);
 		if (result.hasErrors()) {
 			model.put("donation", donation);
+			model.put("cause", causa);
 			return DonationController.VIEWS_DONATIONS_CREATE_OR_UPDATE_FORM;
 		} else {
 			Owner owner = this.clinicService.findOwnerById(ownerId);
-			Cause causa = this.clinicService.findCauseById(causeId);
 			donation.setDate(LocalDate.now());
 			donation.setCause(causa);
 			donation.setOwner(owner);
