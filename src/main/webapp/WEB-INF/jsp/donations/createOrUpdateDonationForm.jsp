@@ -6,23 +6,54 @@
 
 <petclinic:layout pageName="donations">
     <jsp:body>
-    
-        <h2>
+    	
+    	<h2>
             <c:if test="${donation['new']}">New </c:if> Donation
         </h2>
+    	
+    	<b>Cause</b>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Budget target</th>
+                <th>Total budget</th>
+                <th>Organization</th>
+            </tr>
+            </thead>
+            <tr>
+                <td><c:out value="${cause.name}"/></td>
+                <td><c:out value="${cause.desc}"/></td>
+                <td><c:out value="${cause.budgetTarget}"/></td>
+                <td><c:out value="${cause.totalBudget}"/></td>
+                <td><c:out value="${cause.organization}"/></td>
+            </tr>
+        </table>
         
         <form:form method="POST" modelAttribute="donation" class="form-horizontal">
             <form:input type="hidden" path="id" value="${donation.id}"/>
             
             <div class="form-group has-feedback">
-            
-                <petclinic:inputField label="quantity" name="quantity"/>
+            	
+            	<c:set var="cssGroup" value="form-group ${status.error ? 'error' : '' }"/>
+            	
+            	<div class="${cssGroup}">
+            		<label class="col-sm-2 control-label">Owner: </label>
+            		
+            		<div class="col-sm-10">
+		                <select class="form-control" name="owner_id">
+							<c:forEach items="${listOwners}" var="item">
+									<option value="${item.id}" label="${item.lastName}, ${item.firstName}"></option>
+							</c:forEach>
+						</select>
+					</div>
+					
+            	</div>
+
+                <petclinic:inputField label="Quantity: " name="quantity"/>
+     
                 
-                <select name="owner_id">
-					<c:forEach items="${listOwners}" var="item">
-							<option value="${item.id}" label="${item.lastName}, ${item.firstName}"></option>
-					</c:forEach>
-				</select> 
 				   
             </div>
             
@@ -36,6 +67,25 @@
                 </div>
             </div>
         </form:form>
+        
+        <b>Previous donations</b>
+        <table class="table table-striped">
+            <tr>
+             	<th>Owner</th>
+                <th>Date</th>
+                <th>Quantity</th>
+            </tr>
+            <c:forEach var="donation" items="${cause.donations}">
+                <c:if test="${!donation['new']}">
+                    <tr>
+                    	<td><c:out value="${donation.owner.lastName}, ${donation.owner.firstName}"/></td>
+                        <td><petclinic:localDate date="${donation.date}" pattern="yyyy/MM/dd"/></td>
+                        <td><c:out value="${donation.quantity}"/></td>
+                    </tr>
+                </c:if>
+            </c:forEach>
+        </table>
+        
         <c:if test="${!donation['new']}">
         </c:if>
     </jsp:body>

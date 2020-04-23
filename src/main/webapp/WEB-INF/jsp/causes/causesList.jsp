@@ -30,6 +30,11 @@
 							<spring:param name="causeId" value="${cause.id}" />
 						</spring:url> <a href="${fn:escapeXml(donationUrl)}" class="btn btn-default">Create	Donation</a></td>
         				</c:if>	
+        				 <c:if test = "${cause.totalBudget == cause.budgetTarget}">
+        				 <td>
+        				 <c:out value="Cause closed"></c:out>
+        				 </td>
+        				 </c:if>
 				</tr>
 			</c:forEach>
 		</tbody>

@@ -24,7 +24,7 @@
     </jsp:attribute>
 	<jsp:body>
         <h2>
-			<c:if test="${hotel['new']}">New </c:if>Hotel</h2>
+			<c:if test="${hotel['new']}">New </c:if>Booking</h2>
 
         <b>Pet</b>
         <table class="table table-striped">
@@ -55,13 +55,13 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <input type="hidden" name="petId" value="${hotel.pet.id}" />
-                    <button class="btn btn-default" type="submit">Add Hotel</button>
+                    <button class="btn btn-default" type="submit">Add Booking</button>
                 </div>
             </div>
         </form:form>
 
         <br />
-        <b>Previous Hotels</b>
+        <b>Previous Bookings</b>
         <table class="table table-striped">
             <tr>
                 <th>Start Date</th>
