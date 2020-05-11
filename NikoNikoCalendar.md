@@ -29,12 +29,12 @@
 | Day 10        |               |                |                |                |                |                |
 | Day 11        |               |                |                |                |                |                |
 | Day 12        |               |                |                |                |                |                |
-| **Day 13**    |               |    :smiley:    |                |                | :neutral_face: | :neutral_face: |
+| **Day 13**    |               |    :smiley:    |                | :neutral_face: | :neutral_face: | :neutral_face: |
 | Day 14        |               |                |                |                |                |                |
 | Day 15        |               |                |                |                |                |                |
-| **Day 16**    |               |    :smiley:    |                |                |    :smiley:    | :neutral_face: |
+| **Day 16**    |               |    :smiley:    |                |   :smiley:     |    :smiley:    | :neutral_face: |
 | Day 17        |               |    :smiley:    |                |                |    :smiley:    |                |
 | Day 18        |               |                |                |                |    :smiley:    |                |
 | Day 19        |               |                |                |                |                |                |
-| **Day 20**    |               |                |                |                |    :smiley:    | :neutral_face: |
+| **Day 20**    |               |                |                |   :smiley:     |                | :neutral_face: |
 | Day 21        |               |                |                |                |                |                |
