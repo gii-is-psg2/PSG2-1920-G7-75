@@ -36,5 +36,5 @@
 | Day 17        |               |    :smiley:    |                |                |    :smiley:    |                |
 | Day 18        |               |                |                |                |    :smiley:    |                |
 | Day 19        |:neutral_face: |                |                |                |                |                |
-| **Day 20**    |:neutral_face: |                |                |                |                | :neutral_face: |
+| **Day 20**    |:neutral_face: | :neutral_face: |                |                |                | :neutral_face: |
 | Day 21        |               |                |                |                |                |                |
