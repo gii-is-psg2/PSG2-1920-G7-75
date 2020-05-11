@@ -35,6 +35,6 @@
 | **Day 16**    |               |    :smiley:    |                |                |    :smiley:    | :neutral_face: |
 | Day 17        |               |    :smiley:    |                |                |    :smiley:    |                |
 | Day 18        |               |                |                |                |    :smiley:    |                |
-| Day 19        |               |                |                |                |                | :neutral_face: |
-| **Day 20**    |               |                |                |                |                |                |
+| Day 19        |               |                |                |                |                |                |
+| **Day 20**    |               |                |                |                |                | :neutral_face: |
 | Day 21        |               |                |                |                |                |                |
