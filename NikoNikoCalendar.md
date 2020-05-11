@@ -34,7 +34,7 @@
 | Day 15        |               |                |                |                |                |                |
 | **Day 16**    |               |    :smiley:    |                |                |    :smiley:    |                |
 | Day 17        |               |    :smiley:    |                |                |    :smiley:    |                |
-| Day 18        |               |                |                |                |    :smiley:    |                |
+| Day 18        |               |                |    :smiley:    |                |    :smiley:    |                |
 | Day 19        |               |                |                |                |                |                |
 | Day 20        |               |                |                |                |                |                |
 | Day 21        |               |                |                |                |                |                |
