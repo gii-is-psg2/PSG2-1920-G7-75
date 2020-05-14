@@ -36,10 +36,10 @@
 | Day 17        |               |    :smiley:    |                |                |    :smiley:    |                |
 | Day 18        |               |                |                |                |    :smiley:    |                |
 | Day 19        |:neutral_face: |                |                |                |                |                |
-| **Day 20**    |:neutral_face: | :neutral_face: |                |                |                | :neutral_face: |
+| **Day 20**    |:neutral_face: | :neutral_face: |                |                |    :smiley:    | :neutral_face: |
 | Day 21        |               |                |                |                |                |                |
 | Day 22        |:neutral_face: |                |                |                |                |                |
-| Day 23        |               |                |                |                |                |                |
+| Day 23        |               |                |                |                |    :smiley:    |                |
 | Day 24        |               |                |                |                |                |                |
 | Day 25        |               |                |                |                |                |                |
 | Day 26        |               |                |                |                |                |                |
