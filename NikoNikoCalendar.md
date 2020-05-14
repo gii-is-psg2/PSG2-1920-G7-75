@@ -29,14 +29,14 @@
 | Day 10        |               |                |                |                |                |                |
 | Day 11        |               |                |                |                |                |                |
 | Day 12        |               |                |                |                |                |                |
-| **Day 13**    |:neutral_face: |    :smiley:    |                |                | :neutral_face: | :neutral_face: |
+| **Day 13**    |:neutral_face: |    :smiley:    |                | :neutral_face: | :neutral_face: | :neutral_face: |
 | Day 14        |               |                |                |                |                |                |
 | Day 15        |               |                |                |                |                |                |
-| **Day 16**    |   :smiley:    |    :smiley:    |                |                |    :smiley:    | :neutral_face: |
+| **Day 16**    |   :smiley:    |    :smiley:    |                |    :smiley:    |    :smiley:    | :neutral_face: |
 | Day 17        |               |    :smiley:    |                |                |    :smiley:    |                |
 | Day 18        |               |                |                |                |    :smiley:    |                |
 | Day 19        |:neutral_face: |                |                |                |                |                |
-| **Day 20**    |:neutral_face: | :neutral_face: |                |                |    :smiley:    | :neutral_face: |
+| **Day 20**    |:neutral_face: | :neutral_face: |                |    :smiley:    |    :smiley:    | :neutral_face: |
 | Day 21        |               |                |                |                |                |                |
 | Day 22        |:neutral_face: |                |                |                |                |                |
 | **Day 23**    |    :smiley:   |    :smiley:    |    :smiley:    |    :smiley:    |    :smiley:    |    :smiley:    |
