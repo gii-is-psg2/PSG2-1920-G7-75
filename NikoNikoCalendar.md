@@ -38,3 +38,12 @@
 | Day 19        |:neutral_face: |                |                |                |                |                |
 | **Day 20**    |:neutral_face: | :neutral_face: |                |                |                | :neutral_face: |
 | Day 21        |               |                |                |                |                |                |
+| Day 22        |:neutral_face: |                |                |                |                |                |
+| Day 23        |               |                |                |                |                |                |
+| Day 24        |               |                |                |                |                |                |
+| Day 25        |               |                |                |                |                |                |
+| Day 26        |               |                |                |                |                |                |
+| Day 27        |               |                |                |                |                |                |
+| Day 28        |               |                |                |                |                |                |
+| Day 29        |               |                |                |                |                |                |
+| Day 30        |               |                |                |                |                |                |
