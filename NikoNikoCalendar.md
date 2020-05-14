@@ -39,7 +39,7 @@
 | **Day 20**    |:neutral_face: | :neutral_face: |                |                |    :smiley:    | :neutral_face: |
 | Day 21        |               |                |                |                |                |                |
 | Day 22        |:neutral_face: |                |                |                |                |                |
-| Day 23        |               |                |                |                |    :smiley:    |                |
+| **Day 23**    |    :smiley:   |    :smiley:    |    :smiley:    |    :smiley:    |    :smiley:    |    :smiley:    |
 | Day 24        |               |                |                |                |                |                |
 | Day 25        |               |                |                |                |                |                |
 | Day 26        |               |                |                |                |                |                |
