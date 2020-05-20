@@ -22,6 +22,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.Visit;
+import org.springframework.samples.petclinic.repository.VisitRepository;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -79,11 +80,13 @@ public class VisitController {
 
 	// Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is called
 	@PostMapping(value = "/owners/{ownerId}/pets/{petId}/visits/new")
-	public String processNewVisitForm(@Valid Visit visit, BindingResult result) {
+	public String processNewVisitForm(final WebDataBinder dataBinder, @Valid Visit visit, BindingResult result) {
+		dataBinder.setValidator(new VisitValidator(visit));
+
 		if (result.hasErrors()) {
 			return "pets/createOrUpdateVisitForm";
-		}
-		else {
+			
+		}else {
 			this.clinicService.saveVisit(visit);
 			return "redirect:/owners/{ownerId}";
 		}
