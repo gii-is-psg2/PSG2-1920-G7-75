@@ -21,6 +21,8 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
@@ -28,7 +30,11 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -43,6 +49,9 @@ public class OwnerController {
 	private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
 
 	private final ClinicService clinicService;
+	
+	@Autowired
+    private JavaMailSender javaMailSender;
 
 	@Autowired
 	public OwnerController(ClinicService clinicService) {
@@ -68,6 +77,7 @@ public class OwnerController {
 		}
 		else {
 			this.clinicService.saveOwner(owner);
+			this.sendEmail();
 			return "redirect:/owners/" + owner.getId();
 		}
 	}
@@ -144,5 +154,18 @@ public class OwnerController {
 		this.clinicService.removeOwner(owner);
 		return "redirect:/owners";
 	}
+	
+	private void sendEmail() {
+		
+		SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo("antuanjuegos@gmail.com");
 
+        msg.setSubject("Testing from Spring Boot");
+        msg.setText("Hello World \n Spring Boot Email");
+
+        javaMailSender.send(msg);
+        
+		System.out.println("Envio de mensaje correcto");
+	}
+	
 }
