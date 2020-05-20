@@ -22,6 +22,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
@@ -39,6 +40,7 @@ public class Visit extends BaseEntity {
 	 */
 	@Column(name = "visit_date")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@FutureOrPresent
 	private LocalDate date;
 
 	/**
