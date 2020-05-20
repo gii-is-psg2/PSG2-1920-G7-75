@@ -27,8 +27,13 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
 import org.springframework.core.style.ToStringCreator;
@@ -44,6 +49,10 @@ import org.springframework.core.style.ToStringCreator;
 @Entity
 @Table(name = "owners")
 public class Owner extends Person {
+	
+	private static final int MIN_RANGE = 9;
+
+	private static final int MAX_RANGE = 10;
 
 	@Column(name = "address")
 	@NotEmpty
@@ -52,10 +61,10 @@ public class Owner extends Person {
 	@Column(name = "city")
 	@NotEmpty
 	private String city;
-
+	
 	@Column(name = "telephone")
 	@NotEmpty
-	@Digits(fraction = 0, integer = 10)
+	@Pattern(regexp="\\d{9}", message="El numero de telefono debe contener estrictamente 9 digitos")
 	private String telephone;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
