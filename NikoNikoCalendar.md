@@ -44,6 +44,11 @@
 | Day 25        |               |                |                |                |                |                |
 | Day 26        |               |                |                |                |                |                |
 | Day 27        |               |                |                |                |                |                |
-| Day 28        |               |                |                |                |                |                |
+|**Day 28**     |   :smiley:    |   :smiley:     |   :smiley:     |    :smiley:    |    :smiley:    |    :smiley:    |
 | Day 29        |               |                |                |                |                |                |
 | Day 30        |               |                |                |                |                |                |
+| Day 31        |               |                |                |                |                |                |
+| Day 32        |               |                |                |                |                |                |
+| Day 33        |               |                |                |                |                |                |
+| Day 34        |               |                |                |                |                |                |
+| Day 35        |               |                |                |                |                |                |
