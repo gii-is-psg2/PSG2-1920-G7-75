@@ -43,7 +43,7 @@
 | Day 24        |               |                |                |                |                |                |
 | Day 25        |               |                |                |                |                |                |
 | Day 26        |               |                |                |                |                |                |
-| Day 27        |               |                |                |                |                |                |
+| Day 27        |   :smiley:    |                |                |                |                |                |
 |**Day 28**     |   :smiley:    |   :smiley:     |   :smiley:     |    :smiley:    |    :smiley:    |    :smiley:    |
 | Day 29        |               |                |                |                |                |                |
 | Day 30        |               |                |                |                |                |                |
