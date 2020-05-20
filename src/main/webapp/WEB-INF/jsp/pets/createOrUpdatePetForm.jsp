@@ -41,9 +41,6 @@
                         <c:otherwise>
                             <button class="btn btn-default" type="submit">Update Pet</button>
                         </c:otherwise>
-
-                           
-
                     </c:choose>
                 </div>
             </div>
