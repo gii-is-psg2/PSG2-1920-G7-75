@@ -80,10 +80,23 @@ public class VisitController {
 	// Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is called
 	@PostMapping(value = "/owners/{ownerId}/pets/{petId}/visits/new")
 	public String processNewVisitForm(@Valid Visit visit, BindingResult result) {
+		int i= 0;
+		
+		for(Visit v:visit.getPet().getVisits()) {
+			if (v.getPet().equals(visit.getPet()) && v.getDate().equals(visit.getDate())) {
+				i++;
+			}
+			if (i == 2) {
+				result.rejectValue("date", "repeatVisit","Ya existe una visita para el día "+visit.getDate());
+				break;
+			}
+		}
+		
 		if (result.hasErrors()) {
 			return "pets/createOrUpdateVisitForm";
-		}
-		else {
+			
+		}else {
+			
 			this.clinicService.saveVisit(visit);
 			return "redirect:/owners/{ownerId}";
 		}
