@@ -18,7 +18,8 @@
 		</thead>
 		<tbody>
 			<c:forEach items="${selections}" var="cause">
-				<tr>
+				<c:if test = "${cause.totalBudget < cause.budgetTarget}">
+					<tr>
 					<td><c:out value="${cause.name}" /></td>
 					<td><c:out value="${cause.totalBudget}" /></td>
 					<td><c:out value="${cause.budgetTarget}" /></td>
@@ -30,12 +31,9 @@
 							<spring:param name="causeId" value="${cause.id}" />
 						</spring:url> <a href="${fn:escapeXml(donationUrl)}" class="btn btn-default">Create	Donation</a></td>
         				</c:if>	
-        				 <c:if test = "${cause.totalBudget == cause.budgetTarget}">
-        				 <td>
-        				 <c:out value="Cause closed"></c:out>
-        				 </td>
-        				 </c:if>
+        				
 				</tr>
+				</c:if>
 			</c:forEach>
 		</tbody>
 	</table>
