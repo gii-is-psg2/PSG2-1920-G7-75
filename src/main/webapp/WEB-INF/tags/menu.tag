@@ -13,7 +13,6 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
             </button>
         </div>
         <div class="navbar-collapse collapse" id="main-navbar">
@@ -39,14 +38,6 @@
                     <span>Causes</span>
                 </petclinic:menuItem>
 
-                <petclinic:menuItem active="${name eq 'error'}" url="/oups"
-                            title="trigger a RuntimeException to see how it is handled">
-                    <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-                    <span>Error</span>
-                </petclinic:menuItem>
-                
-                
-                
                 
 
             </ul>
