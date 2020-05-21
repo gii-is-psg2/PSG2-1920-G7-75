@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Cause;
 import org.springframework.samples.petclinic.model.Donation;
 import org.springframework.samples.petclinic.model.Owner;
-import org.springframework.samples.petclinic.model.Pet;
-import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -62,6 +60,9 @@ public class DonationController {
 	@PostMapping(value = "/newDonation")
 	public String processCreationForm(@Valid final Donation donation, final BindingResult result, final ModelMap model, @PathVariable("causeId") final int causeId, @RequestParam(name = "owner_id", required = true) final Integer ownerId) {
 		Cause causa = this.clinicService.findCauseById(causeId);
+		if(donation.getQuantity()<=0) {
+			result.rejectValue("quantity","quantityError","No se permiten cantidades negativas o nulas");
+		}
 		if (result.hasErrors()) {
 			model.put("donation", donation);
 			model.put("cause", causa);
