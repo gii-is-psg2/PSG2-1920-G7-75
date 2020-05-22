@@ -46,7 +46,7 @@
 | Day 27        |   :smiley:    |                |                |                |                |                |
 |**Day 28**     |   :smiley:    |   :smiley:     |   :smiley:     |    :smiley:    |    :smiley:    |    :smiley:    |
 | Day 29        |               |                |                |                | :neutral_face: |                |
-| Day 30        |               |                |                |                |                |                |
+| **Day 30**    |   :smiley:    |   :smiley:     |   :smiley:     |    :smiley:    |    :smiley:    |    :smiley:    |
 | Day 31        |               |                |                |                |                |                |
 | Day 32        |               |                |                |                |                |                |
 | Day 33        |               |                |                |                |                |                |
