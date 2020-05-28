@@ -50,5 +50,8 @@
 | Day 31        |               |                |                |                |                |                |
 | Day 32        |               |                |                |                |                |                |
 | Day 33        |               |                |                |                |                |                |
-| Day 34        |               |                |                |                |                |                |
-| Day 35        |               |                |                |                |                |                |
+| **Day 34**    |   :smiley:    |   :smiley:     |   :smiley:     |   :smiley:     |   :smiley:     |   :smiley:     |
+| Day 35        |               |                |                |                |   :smiley:     |                |
+| Day 36        |               |                |                |                |                |                |
+| **Day 37**    |   :smiley:    |   :smiley:     |   :smiley:     |   :smiley:     |   :smiley:     |   :smiley:     |
+| Day 38        |               |                |                |                |                |                |
